@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@color/green" >
+    
+    <ImageView
+        android:layout_width="258dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/logo" />
+    
+    <Button
+        android:id="@+id/check_status_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/check_status_text"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/white"
+        android:background="@drawable/home_button"
+        android:paddingRight="35dp"
+        android:paddingLeft="35dp"
+        />
+    
+    <Button
+        android:id="@+id/add_food_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_food_text"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/white"
+        android:background="@drawable/home_button"
+        android:paddingRight="50dp"
+        android:paddingLeft="50dp"
+        />
+    
+    <TextView  
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:gravity="center"
+	    android:text="@string/most_in_need_of_text"
+	    android:textSize="30sp"
+	    android:layout_marginTop="20dp"
+	    android:textColor="@color/white"
+	/>
+    
+    <TextView  
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:gravity="center"
+	    android:text="@string/vitamin_filler_text"
+	    android:textSize="30sp"
+	    android:layout_marginTop="20dp"
+	    android:textColor="@color/white"
+	/>
+
+</LinearLayout>

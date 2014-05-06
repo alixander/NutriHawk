@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">NutriHawk</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="check_status_text">Check Status</string>
+    <string name="add_food_text">Add Food</string>
+    <string name="most_in_need_of_text">Currently most in need of...</string>
+    <string name="vitamin_filler_text">Vitamin A</string>
+    <string name="status_title">Current Status</string>
+    
+    <color name="green">#44c650</color>
+    <color name="white">#ffffff</color>
+    <color name="dark_purp">#42296b</color>
+    <color name="lite_purp">#6e47a0</color>
+
+</resources>
