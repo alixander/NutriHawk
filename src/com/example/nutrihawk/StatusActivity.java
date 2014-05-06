@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 public class StatusActivity extends SingleFragmentActivity {
 
 	@Override
-	protected Fragment CreateFragment() {
+	protected Fragment createFragment() {
 		return new StatusFragment();
 	}
 

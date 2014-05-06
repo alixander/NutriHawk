@@ -17,6 +17,14 @@ public class Nutrient {
 		mName = name;
 		sources = new ArrayList<String>();
 		datesIntook = new ArrayList<Date>();
+		
+		sources.add("Apple");
+		datesIntook.add(new Date());
+	}
+	
+	@Override
+	public String toString() {
+		return mName;
 	}
 
 
