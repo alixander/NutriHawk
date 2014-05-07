@@ -1,25 +1,24 @@
 package com.example.nutrihawk;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.UUID;
 
 public class Nutrient {
 	private UUID mId;
 	private String mName;
 	private ArrayList<String> sources;
-	private ArrayList<Date> datesIntook;
+	private ArrayList<Calendar> datesIntook;
+	private ArrayList<Integer> amountEachDay;
 	
 	
 	public Nutrient(String name) {
 		mId = UUID.randomUUID();
 		mName = name;
 		sources = new ArrayList<String>();
-		datesIntook = new ArrayList<Date>();
-		
-		sources.add("Apple");
-		datesIntook.add(new Date());
+		datesIntook = new ArrayList<Calendar>();
+		amountEachDay = new ArrayList<Integer>();
 	}
 	
 	@Override
@@ -53,17 +52,21 @@ public class Nutrient {
 	}
 
 
-	public void setSources(ArrayList<String> sources) {
-		this.sources = sources;
+	public void addSource(String source) {
+		this.sources.add(source);
+	}
+	
+	public void addAmount(int amount) {
+		amountEachDay.add((Integer)amount);
 	}
 
 
-	public ArrayList<Date> getDatesIntook() {
+	public ArrayList<Calendar> getDatesIntook() {
 		return datesIntook;
 	}
 
 
-	public void setDatesIntook(ArrayList<Date> datesIntook) {
-		this.datesIntook = datesIntook;
+	public void addDatesIntook(Calendar c) {
+		this.datesIntook.add(c);
 	}
 }

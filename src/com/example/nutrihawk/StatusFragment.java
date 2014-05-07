@@ -1,6 +1,8 @@
 package com.example.nutrihawk;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -62,7 +64,14 @@ public class StatusFragment extends ListFragment {
 			TextView nameTextView = (TextView)convertView.findViewById(R.id.status_list_item_nameTextView);
 			nameTextView.setText(n.getName());
 			TextView daysTextView = (TextView)convertView.findViewById(R.id.status_list_item_lastIntookView);
-			daysTextView.setText("Last Intake: " + n.getDatesIntook().get(n.getDatesIntook().size()-1));
+			Calendar lastIntake = n.getDatesIntook().get(n.getDatesIntook().size()-1);
+			String output;
+			if (lastIntake.equals(new GregorianCalendar(1, 1, 1))) {
+				output = "Last Intake: Never";
+			} else {
+				output = "Last Intake: " + lastIntake.toString();
+			}
+			daysTextView.setText(output);
 			
 			return convertView;
 		}
