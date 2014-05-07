@@ -2,11 +2,14 @@ package com.example.nutrihawk;
 
 import java.util.ArrayList;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class StatusFragment extends ListFragment {
@@ -20,6 +23,26 @@ public class StatusFragment extends ListFragment {
 		
 		StatusItemAdapter adapter = new StatusItemAdapter(mNutrients);
 		setListAdapter(adapter);
+	}
+	
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
+		View v = inflater.inflate(R.layout.fragment_status, parent, false);
+		return v;
+	}
+	
+	public void onListItemClick(ListView l, View v, int position, long id) {
+		Nutrient n = ((StatusItemAdapter)getListAdapter()).getItem(position);
+		
+		Intent i = new Intent(getActivity(), SpecificNutrientActivity.class);
+		i.putExtra(SpecificNutrientFragment.EXTRA_NUTRIENT_ID, n.getId());
+		startActivity(i);
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		((StatusItemAdapter)getListAdapter()).notifyDataSetChanged();
 	}
 	
 	private class StatusItemAdapter extends ArrayAdapter<Nutrient> {

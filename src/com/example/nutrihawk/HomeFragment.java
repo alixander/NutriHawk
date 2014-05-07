@@ -19,12 +19,21 @@ public class HomeFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_home, parent, false);
+		
 		Button status_button = (Button) v.findViewById(R.id.check_status_button);
 		status_button.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				Intent i = new Intent(getActivity(), StatusActivity.class);
 				startActivity(i);
 		    }
+		});
+		
+		Button add_button = (Button)v.findViewById(R.id.add_food_button);
+		add_button.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Intent i = new Intent(getActivity(), AddNutrientActivity.class);
+				startActivity(i);
+			}
 		});
 		return v;
 	}

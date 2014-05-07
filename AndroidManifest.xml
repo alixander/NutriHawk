@@ -26,6 +26,14 @@
             android:name="com.example.nutrihawk.StatusActivity"
             android:label="@string/check_status_menu_text" >
         </activity>
+        <activity
+            android:name="com.example.nutrihawk.SpecificNutrientActivity"
+            android:label="@string/specific_nutrient_menu_text" >
+        </activity>
+        <activity
+            android:name="com.example.nutrihawk.AddNutrientActivity"
+            android:label="@string/add_nutrient_menu_text" >
+        </activity>
     </application>
 
 </manifest>

@@ -19,6 +19,10 @@ public class Information {
 		sourcesOfVitamins.put("APPLE", new VitaminSet(2, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 1, 2));
 		sourcesOfMinerals.put("APPLE", new MineralSet(0, 0, 0, 1, 2, 1, 0, 1, 0, 0, 0, 0, 0));
 		mNutrients.add(new Nutrient("Vitamin A"));
+		mNutrients.add(new Nutrient("Iron"));
+		for (int i = 0; i < 20; i++) {
+			mNutrients.add(new Nutrient("Vitamin/Iron " + i));
+		}
 	}
 	
 	public static Information get(Context c) {
@@ -26,6 +30,10 @@ public class Information {
 			sInformation = new Information(c.getApplicationContext());
 		}
 		return sInformation;
+	}
+	
+	public void addNutrient(Nutrient n) {
+		mNutrients.add(n);
 	}
 	
 	public ArrayList<Nutrient> getNutrients() {
