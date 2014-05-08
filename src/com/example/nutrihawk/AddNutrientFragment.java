@@ -25,6 +25,12 @@ public class AddNutrientFragment extends Fragment {
 	}
 	
 	@Override
+	public void onPause() {
+		super.onPause();
+//		Information.get(getActivity()).saveNutrients();
+	}
+	
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_add_nutrient, parent, false);
 		

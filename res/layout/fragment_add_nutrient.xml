@@ -12,9 +12,81 @@
         />
     <Button 
         android:id="@+id/add_nutrient_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="48dp"
         android:text="Add"
         />
+    <TableLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:stretchColumns="*"
+        android:id="@+id/food_category_table">
+        
+        <TableRow
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:layout_weight="1"
+	        android:weightSum="3" >
+        
+	        <Button
+	            android:id="@+id/fruits_category_button"
+	            android:text="Fruits"
+	            android:layout_width="0dp"
+	            android:layout_height="100dp"
+	            android:layout_weight="1"
+	            />
+	        
+	        <Button
+	            android:id="@+id/vegetables_category_button"
+	            android:text="Veggies"
+	            android:layout_width="0dp"
+	            android:layout_height="100dp"
+	            android:layout_weight="1"
+	            />
+	        
+	        <Button
+	            android:id="@+id/dairy_category_button"
+	            android:text="Dairy"
+	            android:layout_width="0dp"
+	            android:layout_height="100dp"
+	            android:layout_weight="1"
+	            />
+	    </TableRow>
+	    
+        <TableRow
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:layout_weight="1"
+	        android:weightSum="3" >
+        
+	        <Button
+	            android:id="@+id/grains_category_button"
+	            android:text="Grains"
+	            android:layout_width="0dp"
+	            android:layout_height="100dp"
+	            android:layout_weight="1"
+	            />
+	        
+	        <Button
+	            android:id="@+id/meats_category_button"
+	            android:text="Meats"
+	            android:layout_width="0dp"
+	            android:layout_height="100dp"
+	            android:layout_weight="1"
+	            />
+	        
+	        <Button
+	            android:id="@+id/nuts_category_button"
+	            android:text="Nuts"
+	            android:layout_width="0dp"
+	            android:layout_height="100dp"
+	            android:layout_weight="1"
+	            />
+	    </TableRow>
+        
+    </TableLayout>
 
 </LinearLayout>

@@ -7,8 +7,13 @@ import java.util.UUID;
 import org.joda.time.LocalDate;
 
 import android.content.Context;
+import android.util.Log;
 
 public class Information {
+	private static final String TAG = "NutrientInformation";
+	private static final String FILENAME = "nutrients.json";
+	private NutrientInformationJSONSerializer mSerializer;
+	
 	private ArrayList<Nutrient> mNutrients;
 	public static HashMap<String, VitaminSet> sourcesOfVitamins = new HashMap();
 	public static HashMap<String, MineralSet> sourcesOfMinerals = new HashMap();
@@ -18,6 +23,7 @@ public class Information {
 	private Information(Context appContext) {
 		mAppContext = appContext;
 		mNutrients = new ArrayList<Nutrient>();
+		mSerializer = new NutrientInformationJSONSerializer(mAppContext, FILENAME);
 		
 		sourcesOfVitamins.put("APPLE", new VitaminSet(2, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 1, 2));
 		sourcesOfMinerals.put("APPLE", new MineralSet(0, 0, 0, 1, 2, 1, 0, 1, 0, 0, 0, 0, 0));
@@ -64,6 +70,17 @@ public class Information {
 			sInformation = new Information(c.getApplicationContext());
 		}
 		return sInformation;
+	}
+	
+	public boolean saveNutrients() {
+		try {
+			mSerializer.saveNutrients(mNutrients);
+			Log.d(TAG, "nutrients saved");
+			return true;
+		} catch (Exception e) {
+			Log.e(TAG, "Error saving ", e);
+			return false;
+		}
 	}
 	
 	public static HashMap<String, VitaminSet> getVitaminSources() {

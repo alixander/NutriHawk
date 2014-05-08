@@ -1,12 +1,19 @@
 package com.example.nutrihawk;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.UUID;
 
 import org.joda.time.LocalDate;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Nutrient {
+	private static final String JSON_ID = "id";
+	private static final String JSON_NAME = "name";
+	private static final String JSON_SOURCES = "sources";
+	private static final String JSON_DATES = "dates";
+	private static final String JSON_AMOUNTS = "amounts";
+	
 	private UUID mId;
 	private String mName;
 	private ArrayList<String> sources;
@@ -20,6 +27,22 @@ public class Nutrient {
 		sources = new ArrayList<String>();
 		datesIntook = new ArrayList<LocalDate>();
 		amountEachDay = new ArrayList<Integer>();
+	}
+	
+	public JSONObject toJSON() throws JSONException {
+		JSONObject json = new JSONObject();
+		json.put(JSON_ID, mId.toString());
+		json.put(JSON_NAME, mName);
+		//Probably doesn't work for ArrayList objects
+		json.put(JSON_SOURCES, sources);
+		json.put(JSON_DATES, datesIntook);
+		json.put(JSON_AMOUNTS, amountEachDay);
+		return json;
+	}
+	
+	//Unfinished
+	public Nutrient(JSONObject json) throws JSONException {
+		mId = UUID.fromString(json.getString(JSON_ID));
 	}
 	
 	@Override
