@@ -1,11 +1,10 @@
 package com.example.nutrihawk;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.UUID;
+
+import org.joda.time.LocalDate;
 
 import android.content.Context;
 
@@ -50,7 +49,7 @@ public class Information {
 		mNutrients.add(new Nutrient("Molybdenum"));
 		
 		for (Nutrient n : mNutrients) {
-			Calendar neverDate = new GregorianCalendar(1, 1, 1);
+			LocalDate neverDate = new LocalDate(1, 1, 1);
 			n.addDatesIntook(neverDate);
 		}
 	}

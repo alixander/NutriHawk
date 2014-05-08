@@ -1,12 +1,12 @@
 package com.example.nutrihawk;
 
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
+
+import org.joda.time.LocalDate;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -43,14 +43,16 @@ public class AddNutrientFragment extends Fragment {
 					VitaminSet foodVitamins = vitaminSources.get(newFood);
 					MineralSet foodMinerals = mineralSources.get(newFood);
 					for (Nutrient n : currentNutrients) {
-						if (foodVitamins.getVitaminAmount().containsKey(n.toString().toUpperCase())) {
-							n.addAmount(foodVitamins.getVitaminAmount().get(n.toString().toUpperCase()));
+						if (foodVitamins.getVitaminAmount().containsKey(n.toString()) &&
+								foodVitamins.getVitaminAmount().get(n.toString()) != 0) {
+							n.addAmount(foodVitamins.getVitaminAmount().get(n.toString()));
 							n.addSource(newFood);
-							n.addDatesIntook(new GregorianCalendar());
-						} else if (foodMinerals.getMineralAmount().containsKey(n.toString().toUpperCase())) {
+							n.addDatesIntook(new LocalDate());
+						} else if (foodMinerals.getMineralAmount().containsKey(n.toString().toUpperCase()) &&
+								foodMinerals.getMineralAmount().get(n.toString().toUpperCase()) != 0) {
 							n.addAmount(foodMinerals.getMineralAmount().get(n.toString().toUpperCase()));
 							n.addSource(newFood);
-							n.addDatesIntook(new GregorianCalendar());
+							n.addDatesIntook(new LocalDate());
 						} else {
 						}
 					}

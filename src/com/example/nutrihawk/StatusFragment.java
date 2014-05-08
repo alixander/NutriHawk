@@ -2,7 +2,9 @@ package com.example.nutrihawk;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
+
+import org.joda.time.Days;
+import org.joda.time.LocalDate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -64,12 +66,14 @@ public class StatusFragment extends ListFragment {
 			TextView nameTextView = (TextView)convertView.findViewById(R.id.status_list_item_nameTextView);
 			nameTextView.setText(n.getName());
 			TextView daysTextView = (TextView)convertView.findViewById(R.id.status_list_item_lastIntookView);
-			Calendar lastIntake = n.getDatesIntook().get(n.getDatesIntook().size()-1);
+			LocalDate lastIntake = n.getDatesIntook().get(n.getDatesIntook().size()-1);
 			String output;
-			if (lastIntake.equals(new GregorianCalendar(1, 1, 1))) {
+			if (lastIntake.equals(new LocalDate(1, 1, 1))) {
 				output = "Last Intake: Never";
+			} else if (lastIntake.equals(new LocalDate())){
+				output = "Last Intake: Today";
 			} else {
-				output = "Last Intake: " + lastIntake.toString();
+				output = "Last Intake: " + Days.daysBetween(lastIntake, new LocalDate());
 			}
 			daysTextView.setText(output);
 			

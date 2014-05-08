@@ -2,14 +2,15 @@ package com.example.nutrihawk;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.UUID;
+
+import org.joda.time.LocalDate;
 
 public class Nutrient {
 	private UUID mId;
 	private String mName;
 	private ArrayList<String> sources;
-	private ArrayList<Calendar> datesIntook;
+	private ArrayList<LocalDate> datesIntook;
 	private ArrayList<Integer> amountEachDay;
 	
 	
@@ -17,7 +18,7 @@ public class Nutrient {
 		mId = UUID.randomUUID();
 		mName = name;
 		sources = new ArrayList<String>();
-		datesIntook = new ArrayList<Calendar>();
+		datesIntook = new ArrayList<LocalDate>();
 		amountEachDay = new ArrayList<Integer>();
 	}
 	
@@ -61,12 +62,12 @@ public class Nutrient {
 	}
 
 
-	public ArrayList<Calendar> getDatesIntook() {
+	public ArrayList<LocalDate> getDatesIntook() {
 		return datesIntook;
 	}
 
 
-	public void addDatesIntook(Calendar c) {
-		this.datesIntook.add(c);
+	public void addDatesIntook(LocalDate l) {
+		this.datesIntook.add(l);
 	}
 }
