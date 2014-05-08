@@ -1,7 +1,8 @@
 package com.example.nutrihawk;
 
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
@@ -11,19 +12,23 @@ import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 public class StatusFragment extends ListFragment {
 	private ArrayList<Nutrient> mNutrients;
+	private ArrayList<Nutrient> copy;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getActivity().setTitle(R.string.status_title);
 		mNutrients = Information.get(getActivity()).getNutrients();
+		copy = new ArrayList<Nutrient>(mNutrients);
 		
 		StatusItemAdapter adapter = new StatusItemAdapter(mNutrients);
 		setListAdapter(adapter);
@@ -32,6 +37,53 @@ public class StatusFragment extends ListFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_status, parent, false);
+		
+		Button show_all_button = (Button) v.findViewById(R.id.show_all_button);
+		show_all_button.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				for (Nutrient n : copy) {
+					if (!mNutrients.contains(n)) {
+						mNutrients.add(n);
+					}
+				}
+				((StatusItemAdapter)getListAdapter()).notifyDataSetChanged();
+		    }
+		});
+		
+		Button show_vitamins_button = (Button)v.findViewById(R.id.show_vitamins_only_button);
+		show_vitamins_button.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				ArrayList<Nutrient> temp = new ArrayList<Nutrient>();
+				for (Nutrient n : copy) {
+					if (n.toString().contains("Vitamin")) {
+						temp.add(n);
+					}
+				}
+				mNutrients.clear();
+				for (Nutrient n : temp) {
+					mNutrients.add(n);
+				}
+				((StatusItemAdapter)getListAdapter()).notifyDataSetChanged();
+			}
+		});
+		
+		Button show_minerals_button = (Button)v.findViewById(R.id.show_minerals_only_button);
+		show_minerals_button.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				ArrayList<Nutrient> temp = new ArrayList<Nutrient>();
+				for (Nutrient n : copy) {
+					if (!n.toString().contains("Vitamin")) {
+						temp.add(n);
+					}
+				}
+				mNutrients.clear();
+				for (Nutrient n : temp) {
+					mNutrients.add(n);
+				}
+				((StatusItemAdapter)getListAdapter()).notifyDataSetChanged();
+			}
+		});
+		
 		return v;
 	}
 	
