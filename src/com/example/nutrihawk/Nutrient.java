@@ -57,8 +57,17 @@ public class Nutrient {
 		this.sources.add(source);
 	}
 	
-	public void addAmount(int amount) {
-		amountEachDay.add((Integer)amount);
+	public void addAmount(int amount, LocalDate date) {
+		if (amountEachDay.size() > 1 && date.getDayOfYear() == datesIntook.get(datesIntook.size()-1).getDayOfYear()) {
+			amountEachDay.set(amountEachDay.size()-1, amountEachDay.get(amountEachDay.size()-1) + amount);
+		} else {
+			amountEachDay.add((Integer)amount);
+			datesIntook.add(date);
+		}
+	}
+	
+	public ArrayList<Integer> getAmount() {
+		return amountEachDay;
 	}
 
 

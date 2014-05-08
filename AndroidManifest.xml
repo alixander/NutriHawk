@@ -34,6 +34,10 @@
             android:name="com.example.nutrihawk.AddNutrientActivity"
             android:label="@string/add_nutrient_menu_text" >
         </activity>
+        <activity
+            android:name="com.example.nutrihawk.FoodSourcesActivity"
+            android:label="@string/food_sources_menu_text" >
+        </activity>
     </application>
 
 </manifest>

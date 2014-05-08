@@ -10,23 +10,33 @@
         android:orientation="horizontal">
         <Button
             android:id="@+id/show_all_button"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:textColor="@color/white"
             android:layout_height="fill_parent"
+            android:padding="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/show_all_button"
             android:text="@string/show_all_text" />
 
 
         <Button
-            android:id="@+id/show_vitamins_only_button"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
             android:layout_weight="1"
+            android:id="@+id/show_vitamins_only_button"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:background="@drawable/show_button"
             android:text="@string/show_vitamins_only_text" />
         
         <Button
-            android:id="@+id/show_minerals_only_button"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
             android:layout_weight="1"
+            android:id="@+id/show_minerals_only_button"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:background="@drawable/show_button"
             android:text="@string/show_minerals_only_text" />
     </LinearLayout>
 

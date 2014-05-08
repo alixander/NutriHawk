@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
     <TextView
-        android:id="@+id/nutrient_name"
+        android:id="@+id/sources_for_nutrient"
 	    android:layout_width="fill_parent" 
 	    android:layout_height="wrap_content" 
 	    android:gravity="center"
@@ -11,22 +11,12 @@
 	    android:text="filler"
 	    android:layout_marginTop="20dp"
 	/>
-    <Button
-        android:id="@+id/check_sources_button"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/check_sources_text"
-        android:layout_gravity="center_horizontal"
-        android:layout_below="@id/nutrient_name"
-        />
-    
     <LinearLayout
-        android:id="@+id/graph_holder"
+        android:id="@+id/chart"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" 
-        android:layout_below="@id/check_sources_button" 
-        android:background="@color/dark_purp" >
+        android:layout_below="@id/sources_for_nutrient" >
    </LinearLayout>
 
 </RelativeLayout>

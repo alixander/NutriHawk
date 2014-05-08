@@ -3,22 +3,30 @@
 
     <string name="app_name">NutriHawk</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    
     <string name="check_status_text">Check Status</string>
+    <string name="check_sources_text">Food Sources</string>
+    
     <string name="check_status_menu_text">Current Status</string>
     <string name="specific_nutrient_menu_text">Nutrient</string>
     <string name="add_nutrient_menu_text">Add Nutrient</string>
+    <string name="food_sources_menu_text">Food Sources</string>
+    
     <string name="add_food_text">Add Food</string>
     <string name="most_in_need_of_text">Currently most in need of...</string>
     <string name="vitamin_filler_text">Vitamin A</string>
+    
     <string name="status_title">Current Status</string>
+    
     <string name="show_all_text">Show All</string>
     <string name="show_vitamins_only_text">Show Vitamins Only</string>
     <string name="show_minerals_only_text">Show Minerals Only</string>
     
     <color name="green">#44c650</color>
+    <color name="black">#000000</color>
     <color name="white">#ffffff</color>
     <color name="dark_purp">#42296b</color>
     <color name="lite_purp">#6e47a0</color>
+    <color name="dark_blue">#003f5e</color>
 
 </resources>

@@ -73,7 +73,7 @@ public class StatusFragment extends ListFragment {
 			} else if (lastIntake.equals(new LocalDate())){
 				output = "Last Intake: Today";
 			} else {
-				output = "Last Intake: " + Days.daysBetween(lastIntake, new LocalDate());
+				output = "Last Intake: " + Days.daysBetween(lastIntake, new LocalDate()) + " days ago";
 			}
 			daysTextView.setText(output);
 			

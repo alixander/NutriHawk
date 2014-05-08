@@ -3,19 +3,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" 
-    android:background="@color/green" >
+    android:background="@drawable/home_bg" >
+   
     
     <ImageView
         android:layout_width="258dp"
         android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/logo" />
+        android:src="@drawable/ic_launcher" />
+    
+    <TextView  
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:gravity="center"
+	    android:text="@string/most_in_need_of_text"
+	    android:textSize="20sp"
+	    android:layout_marginTop="20dp"
+	    android:textColor="@color/dark_blue"
+	/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/vitamin_filler_text"
+        android:textColor="@color/dark_blue"
+        android:textSize="25sp" />
     
     <Button
+        android:layout_marginTop="100dp"
         android:id="@+id/check_status_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/check_status_text"
+        android:textSize="20dp"
         android:layout_gravity="center_horizontal"
         android:textColor="@color/white"
         android:background="@drawable/home_button"
@@ -30,30 +52,12 @@
         android:text="@string/add_food_text"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
+        android:textSize="20dp"
         android:textColor="@color/white"
         android:background="@drawable/home_button"
-        android:paddingRight="50dp"
-        android:paddingLeft="50dp"
+        android:paddingRight="52dp"
+        android:paddingLeft="52dp"
         />
-    
-    <TextView  
-	    android:layout_width="fill_parent" 
-	    android:layout_height="wrap_content" 
-	    android:gravity="center"
-	    android:text="@string/most_in_need_of_text"
-	    android:textSize="30sp"
-	    android:layout_marginTop="20dp"
-	    android:textColor="@color/white"
-	/>
-    
-    <TextView  
-	    android:layout_width="fill_parent" 
-	    android:layout_height="wrap_content" 
-	    android:gravity="center"
-	    android:text="@string/vitamin_filler_text"
-	    android:textSize="30sp"
-	    android:layout_marginTop="20dp"
-	    android:textColor="@color/white"
-	/>
+   
 
 </LinearLayout>

@@ -18,8 +18,13 @@ public class Information {
 	private Information(Context appContext) {
 		mAppContext = appContext;
 		mNutrients = new ArrayList<Nutrient>();
+		
 		sourcesOfVitamins.put("APPLE", new VitaminSet(2, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 1, 2));
 		sourcesOfMinerals.put("APPLE", new MineralSet(0, 0, 0, 1, 2, 1, 0, 1, 0, 0, 0, 0, 0));
+		
+		sourcesOfVitamins.put("ORANGE", new VitaminSet(8, 160, 0, 0, 0, 0, 5, 0, 0, 0, 0, 2, 0));
+		sourcesOfMinerals.put("ORANGE", new MineralSet(9, 0, 0, 7, 3, 4, 1, 1, 2, 4, 0, 1, 0));
+		
 		mNutrients.add(new Nutrient("Vitamin A"));
 		mNutrients.add(new Nutrient("Vitamin B1"));
 		mNutrients.add(new Nutrient("Vitamin B2"));
