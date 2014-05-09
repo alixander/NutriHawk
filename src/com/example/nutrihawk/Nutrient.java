@@ -7,6 +7,8 @@ import org.joda.time.LocalDate;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 public class Nutrient {
 	private static final String JSON_ID = "id";
 	private static final String JSON_NAME = "name";
@@ -29,20 +31,54 @@ public class Nutrient {
 		amountEachDay = new ArrayList<Integer>();
 	}
 	
+	public Nutrient(JSONObject json) throws JSONException {
+		mId = UUID.fromString(json.getString(JSON_ID));
+		mName = json.getString(JSON_NAME);
+		sources = new ArrayList<String>();
+		datesIntook = new ArrayList<LocalDate>();
+		amountEachDay = new ArrayList<Integer>();
+		
+		JSONObject tempSources = json.getJSONObject(JSON_SOURCES);
+		for (int i = 0; i < tempSources.length(); i++) {
+			sources.add(tempSources.getString(""+i));
+		}
+		
+		JSONObject tempDates = json.getJSONObject(JSON_DATES);
+		for (int i = 0; i < tempDates.length(); i++) {
+			Log.d("YO", tempDates.getString(""+i));
+			datesIntook.add(new LocalDate(tempDates.getString(""+i)));
+		}
+		
+		JSONObject tempAmounts = json.getJSONObject(JSON_AMOUNTS);
+		for (int i = 0; i < tempAmounts.length(); i++) {
+			amountEachDay.add(tempAmounts.getInt(""+i));
+		}
+	}
+	
 	public JSONObject toJSON() throws JSONException {
 		JSONObject json = new JSONObject();
 		json.put(JSON_ID, mId.toString());
 		json.put(JSON_NAME, mName);
-		//Probably doesn't work for ArrayList objects
-		json.put(JSON_SOURCES, sources);
-		json.put(JSON_DATES, datesIntook);
-		json.put(JSON_AMOUNTS, amountEachDay);
+
+		JSONObject json_sources = new JSONObject();
+		for (int i = 0; i < sources.size(); i++) {
+			json_sources.put(""+i, sources.get(i));
+		}
+		json.put(JSON_SOURCES, json_sources);
+		
+		JSONObject json_dates = new JSONObject();
+		for (int i = 0; i < datesIntook.size(); i++) {
+			json_dates.put(""+i, ""+datesIntook.get(i).getYear()+datesIntook.get(i).getMonthOfYear()+datesIntook.get(i).getDayOfMonth());
+		}
+		json.put(JSON_DATES, json_dates);
+		
+		JSONObject json_amounts = new JSONObject();
+		for (int i = 0; i < amountEachDay.size(); i++) {
+			json_amounts.put(""+i, amountEachDay.get(i));
+		}
+		json.put(JSON_AMOUNTS, json_amounts);
+		
 		return json;
-	}
-	
-	//Unfinished
-	public Nutrient(JSONObject json) throws JSONException {
-		mId = UUID.fromString(json.getString(JSON_ID));
 	}
 	
 	@Override

@@ -27,7 +27,7 @@ public class AddNutrientFragment extends Fragment {
 	@Override
 	public void onPause() {
 		super.onPause();
-//		Information.get(getActivity()).saveNutrients();
+		Information.get(getActivity()).saveNutrients();
 	}
 	
 	@Override
