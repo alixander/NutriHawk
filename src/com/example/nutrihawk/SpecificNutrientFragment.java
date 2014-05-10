@@ -47,7 +47,7 @@ public class SpecificNutrientFragment extends Fragment {
 			}
 		});
 		
-		int numOfPoints = mNutrient.getDatesIntook().size()-1;
+		int numOfPoints = mNutrient.getDatesIntook().size();
 		LinearLayout graph_holder = (LinearLayout) v.findViewById(R.id.graph_holder);
 		if (numOfPoints != 0) {
 			GraphViewData[] data = new GraphViewData[numOfPoints];

@@ -1,8 +1,6 @@
 package com.example.nutrihawk;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
@@ -132,14 +130,16 @@ public class StatusFragment extends ListFragment {
 			TextView nameTextView = (TextView)convertView.findViewById(R.id.status_list_item_nameTextView);
 			nameTextView.setText(n.getName());
 			TextView daysTextView = (TextView)convertView.findViewById(R.id.status_list_item_lastIntookView);
-			LocalDate lastIntake = n.getDatesIntook().get(n.getDatesIntook().size()-1);
 			String output;
-			if (lastIntake.equals(new LocalDate(1, 1, 1))) {
+			if (n.getDatesIntook().size() == 0) {
 				output = "Last Intake: Never";
-			} else if (lastIntake.getDayOfYear() == (new LocalDate()).getDayOfYear()) {
-				output = "Last Intake: Today";
 			} else {
-				output = "Last Intake: " + Days.daysBetween(lastIntake, new LocalDate()).getDays() + " days ago";
+				LocalDate lastIntake = n.getDatesIntook().get(n.getDatesIntook().size()-1);
+				if (lastIntake.getDayOfYear() == (LocalDate.now().getDayOfYear())) {
+					output = "Last Intake: Today";
+				} else {
+					output = "Last Intake: " + Days.daysBetween(lastIntake, new LocalDate()).getDays() + " days ago";
+				}
 			}
 			daysTextView.setText(output);
 			

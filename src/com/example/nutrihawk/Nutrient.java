@@ -13,12 +13,14 @@ public class Nutrient {
 	private static final String JSON_ID = "id";
 	private static final String JSON_NAME = "name";
 	private static final String JSON_SOURCES = "sources";
+	private static final String JSON_SOURCES_COUNT = "sources_count";
 	private static final String JSON_DATES = "dates";
 	private static final String JSON_AMOUNTS = "amounts";
 	
 	private UUID mId;
 	private String mName;
 	private ArrayList<String> sources;
+	private ArrayList<Integer> sourcesCount;
 	private ArrayList<LocalDate> datesIntook;
 	private ArrayList<Integer> amountEachDay;
 	
@@ -27,6 +29,7 @@ public class Nutrient {
 		mId = UUID.randomUUID();
 		mName = name;
 		sources = new ArrayList<String>();
+		sourcesCount = new ArrayList<Integer>();
 		datesIntook = new ArrayList<LocalDate>();
 		amountEachDay = new ArrayList<Integer>();
 	}
@@ -35,12 +38,18 @@ public class Nutrient {
 		mId = UUID.fromString(json.getString(JSON_ID));
 		mName = json.getString(JSON_NAME);
 		sources = new ArrayList<String>();
+		sourcesCount = new ArrayList<Integer>();
 		datesIntook = new ArrayList<LocalDate>();
 		amountEachDay = new ArrayList<Integer>();
 		
 		JSONObject tempSources = json.getJSONObject(JSON_SOURCES);
 		for (int i = 0; i < tempSources.length(); i++) {
 			sources.add(tempSources.getString(""+i));
+		}
+		
+		JSONObject tempSourcesCount = json.getJSONObject(JSON_SOURCES_COUNT);
+		for (int i = 0; i < tempSourcesCount.length(); i++) {
+			sourcesCount.add(tempSourcesCount.getInt(""+i));
 		}
 		
 		JSONObject tempDates = json.getJSONObject(JSON_DATES);
@@ -66,9 +75,15 @@ public class Nutrient {
 		}
 		json.put(JSON_SOURCES, json_sources);
 		
+		JSONObject json_sources_count = new JSONObject();
+		for (int i = 0; i < sourcesCount.size(); i++) {
+			json_sources_count.put(""+i, sourcesCount.get(i));
+		}
+		json.put(JSON_SOURCES_COUNT, json_sources_count);
+		
 		JSONObject json_dates = new JSONObject();
 		for (int i = 0; i < datesIntook.size(); i++) {
-			json_dates.put(""+i, ""+datesIntook.get(i).getYear()+datesIntook.get(i).getMonthOfYear()+datesIntook.get(i).getDayOfMonth());
+			json_dates.put(""+i, ""+datesIntook.get(i).toString());
 		}
 		json.put(JSON_DATES, json_dates);
 		
@@ -113,11 +128,18 @@ public class Nutrient {
 
 
 	public void addSource(String source) {
-		this.sources.add(source);
+		// Previously eaten
+		if (sources.contains(source)) {
+			sourcesCount.set(sources.indexOf(source), sourcesCount.get(sources.indexOf(source))+1);
+		} else { // New food
+			sources.add(source);
+			sourcesCount.add(1);
+		}
 	}
 	
 	public void addAmount(int amount, LocalDate date) {
-		if (amountEachDay.size() > 1 && date.getDayOfYear() == datesIntook.get(datesIntook.size()-1).getDayOfYear()) {
+		// Adding to same day
+		if (amountEachDay.size() > 0 && date.getDayOfYear() == datesIntook.get(datesIntook.size()-1).getDayOfYear()) {
 			amountEachDay.set(amountEachDay.size()-1, amountEachDay.get(amountEachDay.size()-1) + amount);
 		} else {
 			amountEachDay.add((Integer)amount);
@@ -132,14 +154,5 @@ public class Nutrient {
 
 	public ArrayList<LocalDate> getDatesIntook() {
 		return datesIntook;
-	}
-
-
-	public void addDatesIntook(LocalDate l) {
-		// Only the "never" date
-		if (datesIntook.size() == 1) {
-			datesIntook.clear();
-		}
-		this.datesIntook.add(l);
 	}
 }

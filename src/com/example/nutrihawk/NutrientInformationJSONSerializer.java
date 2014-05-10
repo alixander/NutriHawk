@@ -57,7 +57,6 @@ public class NutrientInformationJSONSerializer {
 			}
 			JSONArray array = (JSONArray) new JSONTokener(jsonString.toString()).nextValue();
 			for (int i = 0; i < array.length(); i++) {
-				Log.d("OKAY", "ok");
 				nutrients.add(new Nutrient(array.getJSONObject(i)));
 			}
 		} catch (FileNotFoundException e) {
