@@ -28,6 +28,9 @@ public class Information {
 		
 		try {
 			mNutrients = mSerializer.loadNutrients();
+			if (mNutrients.size() == 0) {
+				throw new Exception();
+			}
 		} catch (Exception e) {
 			mNutrients = new ArrayList<Nutrient>();
 			mNutrients.add(new Nutrient("Vitamin A"));
