@@ -136,6 +136,10 @@ public class Nutrient {
 
 
 	public void addDatesIntook(LocalDate l) {
+		// Only the "never" date
+		if (datesIntook.size() == 1) {
+			datesIntook.clear();
+		}
 		this.datesIntook.add(l);
 	}
 }

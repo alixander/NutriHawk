@@ -29,9 +29,20 @@ public class StatusFragment extends ListFragment {
 		getActivity().setTitle(R.string.status_title);
 		mNutrients = Information.get(getActivity()).getNutrients();
 		copy = new ArrayList<Nutrient>(mNutrients);
-		
+		Information.get(getActivity()).sortNutrientsByDate();
 		StatusItemAdapter adapter = new StatusItemAdapter(mNutrients);
 		setListAdapter(adapter);
+	}
+	
+	@Override
+	public void onPause() {
+		super.onPause();
+		for (Nutrient n : copy) {
+			if (!mNutrients.contains(n)) {
+				mNutrients.add(n);
+			}
+		}
+		((StatusItemAdapter)getListAdapter()).notifyDataSetChanged();
 	}
 	
 	@Override
@@ -46,6 +57,7 @@ public class StatusFragment extends ListFragment {
 						mNutrients.add(n);
 					}
 				}
+				Information.get(getActivity()).sortNutrientsByDate();
 				((StatusItemAdapter)getListAdapter()).notifyDataSetChanged();
 		    }
 		});
@@ -63,6 +75,7 @@ public class StatusFragment extends ListFragment {
 				for (Nutrient n : temp) {
 					mNutrients.add(n);
 				}
+				Information.get(getActivity()).sortNutrientsByDate();
 				((StatusItemAdapter)getListAdapter()).notifyDataSetChanged();
 			}
 		});
@@ -80,6 +93,7 @@ public class StatusFragment extends ListFragment {
 				for (Nutrient n : temp) {
 					mNutrients.add(n);
 				}
+				Information.get(getActivity()).sortNutrientsByDate();
 				((StatusItemAdapter)getListAdapter()).notifyDataSetChanged();
 			}
 		});
@@ -122,10 +136,10 @@ public class StatusFragment extends ListFragment {
 			String output;
 			if (lastIntake.equals(new LocalDate(1, 1, 1))) {
 				output = "Last Intake: Never";
-			} else if (lastIntake.equals(new LocalDate())){
+			} else if (lastIntake.getDayOfYear() == (new LocalDate()).getDayOfYear()) {
 				output = "Last Intake: Today";
 			} else {
-				output = "Last Intake: " + Days.daysBetween(lastIntake, new LocalDate()) + " days ago";
+				output = "Last Intake: " + Days.daysBetween(lastIntake, new LocalDate()).getDays() + " days ago";
 			}
 			daysTextView.setText(output);
 			
