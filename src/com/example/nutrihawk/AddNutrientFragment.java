@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import org.joda.time.LocalDate;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 public class AddNutrientFragment extends Fragment {
 	Button mAddNutrientButton;
+	Button mFruitButton;
 	EditText mNewFood;
 	
 	@Override
@@ -66,6 +68,16 @@ public class AddNutrientFragment extends Fragment {
 				}
 			}
 		});
+		
+		mFruitButton = (Button)v.findViewById(R.id.fruits_category_button);
+		mFruitButton.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Intent i = new Intent(getActivity(), FoodCategoryActivity.class);
+				i.putExtra(FoodCategoryFragment.EXTRA_FOOD_CATEGORY_ID, (String)mFruitButton.getText());
+				startActivity(i);
+			}
+		});
+		
 		return v;
 	}
 }
