@@ -155,4 +155,8 @@ public class Nutrient {
 	public ArrayList<LocalDate> getDatesIntook() {
 		return datesIntook;
 	}
+	
+	public ArrayList<Integer> getSourcesCount() {
+		return sourcesCount;
+	}
 }

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
     <TextView
@@ -24,9 +28,38 @@
         android:id="@+id/graph_holder"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" 
-        android:layout_below="@id/check_sources_button" 
-        android:background="@color/dark_purp" >
+        android:layout_height="300dp" 
+        android:layout_below="@id/check_sources_button"  >
    </LinearLayout>
+   
+    <TextView
+        android:id="@+id/food_sources_text"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:gravity="center"
+	    android:textSize="30sp"
+	    android:text="Food Sources"
+	    android:layout_marginTop="20dp"
+	    android:layout_below="@id/graph_holder"
+	/>
+    <LinearLayout
+        android:id="@+id/pie_holder"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" 
+        android:layout_below="@id/food_sources_text"  >
+   </LinearLayout>
+   
+   <TextView
+        android:id="@+id/top_five_text"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:gravity="center"
+	    android:textSize="15sp"
+	    android:text="Filler yo"
+	    android:layout_marginTop="20dp"
+	    android:layout_below="@id/pie_holder"
+	/> 
 
 </RelativeLayout>
+</ScrollView>

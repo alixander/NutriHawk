@@ -30,8 +30,9 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:background="@drawable/food_apple_icon"
-                android:text="Apple" />
+                android:background="@drawable/food_button"
+                android:text="Apple"
+                android:textColor="#ffffff"/>
 	        
 	    </TableRow>
         

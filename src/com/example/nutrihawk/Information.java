@@ -25,7 +25,7 @@ public class Information {
 	private Information(Context appContext) {
 		mAppContext = appContext;
 		mSerializer = new NutrientInformationJSONSerializer(mAppContext, FILENAME);
-		
+		populateFoods();
 		try {
 			mNutrients = mSerializer.loadNutrients();
 			// In case user clears data manually or data is lost
@@ -49,7 +49,6 @@ public class Information {
 			mNutrients.add(new Nutrient("Vitamin K"));
 			
 			mNutrients.add(new Nutrient("Potassium"));
-			mNutrients.add(new Nutrient("Chlorine"));
 			mNutrients.add(new Nutrient("Sodium"));
 			mNutrients.add(new Nutrient("Calcium"));
 			mNutrients.add(new Nutrient("Phosphorus"));
@@ -62,12 +61,35 @@ public class Information {
 			mNutrients.add(new Nutrient("Selenium"));
 			mNutrients.add(new Nutrient("Molybdenum"));
 		}
+	}
+	
+	public void populateFoods() {
+		populateFruits();
+	}
+	
+	public void populateFruits() {
+		sourcesOfVitamins.put("APPLE", new VitaminSet(2, 1, 2, 1, 1, 3, (int)(3.7/550), 1, 0, 8, 0, 1, 2));
+		sourcesOfMinerals.put("APPLE", new MineralSet(1, 1, 2, 1, 4, 0, 0, 2, 2, 0, 0, 0, 0));
 		
-		sourcesOfVitamins.put("APPLE", new VitaminSet(2, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 1, 2));
-		sourcesOfMinerals.put("APPLE", new MineralSet(0, 0, 0, 1, 2, 1, 0, 1, 0, 0, 0, 0, 0));
+		sourcesOfVitamins.put("ORANGE", new VitaminSet(8, 10, 4, 3, 5, 5, (int)(13.9/550), 14, 0, 160, 0, 2, 0));
+		sourcesOfMinerals.put("ORANGE", new MineralSet(7, 1, 4, 3, 9, 0, 1, 4, 2, 1, 0, 0, 0));	
 		
-		sourcesOfVitamins.put("ORANGE", new VitaminSet(8, 160, 0, 0, 0, 0, 5, 0, 0, 0, 0, 2, 0));
-		sourcesOfMinerals.put("ORANGE", new MineralSet(9, 0, 0, 7, 3, 4, 1, 1, 2, 4, 0, 1, 0));	
+		sourcesOfVitamins.put("BANANA", new VitaminSet(3, 5, 10, 7, 8, 41, (int)(22/550), 11, 0, 33, 0, 1, 1));
+		sourcesOfMinerals.put("BANANA", new MineralSet(1, 3, 15, 5, 23, 0, 2, 9, 30, 3, 0, 0, 0));
+		
+		sourcesOfVitamins.put("BLACKBERRY", new VitaminSet(6, 2, 2, 5, 4, 2, (int)(12.2/550), 9, 0, 50, 0, 8, 36));
+		sourcesOfMinerals.put("BLACKBERRY", new MineralSet(4, 5, 7, 3, 7, 0, 5, 12, 47, 1, 0, 0, 0));
+		
+		sourcesOfVitamins.put("STRAWBERRY", new VitaminSet(0, 2, 2, 3, 2, 4, (int)(8.7/550), 9, 0, 149, 0, 2, 4));
+		sourcesOfMinerals.put("STRAWBERRY", new MineralSet(2, 3, 5, 4, 7, 0, 1, 4, 29, 1, 0, 0, 0));
+		
+		sourcesOfVitamins.put("WATERMELON", new VitaminSet(18, 3, 2, 1, 3, 3, (int)(6.3/550), 1, 0, 21, 0, 0, 0));
+		sourcesOfMinerals.put("WATERMELON", new MineralSet(1, 2, 4, 2, 5, 0, 1, 3, 3, 1, 0, 0, 0));
+	}
+	
+	public void populateVeggies() {
+		sourcesOfVitamins.put("ALFALFA", new VitaminSet(1, 2, 2, 1, 2, 1, (int)(4.8/550), 3, 0, 5, 0, 0, 13));
+		sourcesOfMinerals.put("ALFALFA", new MineralSet(1, 2, 2, 2, 1, 0, 2, 3, 3, 0, 0, 0, 0));
 	}
 	
 	public void sortNutrientsByDate() {

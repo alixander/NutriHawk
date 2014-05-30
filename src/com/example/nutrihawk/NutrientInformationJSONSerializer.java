@@ -15,7 +15,6 @@ import org.json.JSONException;
 import org.json.JSONTokener;
 
 import android.content.Context;
-import android.util.Log;
 
 public class NutrientInformationJSONSerializer {
 	

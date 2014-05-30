@@ -1,6 +1,5 @@
 package com.example.nutrihawk;
 
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
