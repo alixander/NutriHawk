@@ -3,14 +3,11 @@ package com.example.nutrihawk;
 import java.util.ArrayList;
 import java.util.UUID;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -41,14 +38,8 @@ public class SpecificNutrientFragment extends Fragment {
 		mNutrientNameField = (TextView)v.findViewById(R.id.nutrient_name);
 		mNutrientNameField.setText(mNutrient.getName());
 		
-		Button check_sources_button = (Button)v.findViewById(R.id.check_sources_button);
-		check_sources_button.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				Intent i = new Intent(getActivity(), FoodSourcesActivity.class);
-				i.putExtra(EXTRA_NUTRIENT_ID, mNutrient.getId());
-				startActivity(i);
-			}
-		});
+		TextView mNutrientDescription = (TextView)v.findViewById(R.id.nutrient_description);
+		
 		
 		RadCartesianChartView chartView = new RadCartesianChartView(getActivity().getBaseContext());
 
