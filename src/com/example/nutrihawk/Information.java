@@ -40,7 +40,6 @@ public class Information {
 			mNutrients.add(new Nutrient("Vitamin B3"));
 			mNutrients.add(new Nutrient("Vitamin B5"));
 			mNutrients.add(new Nutrient("Vitamin B6"));
-			mNutrients.add(new Nutrient("Vitamin B7"));
 			mNutrients.add(new Nutrient("Vitamin B9"));
 			mNutrients.add(new Nutrient("Vitamin B12"));
 			mNutrients.add(new Nutrient("Vitamin C"));
@@ -85,11 +84,6 @@ public class Information {
 		
 		sourcesOfVitamins.put("WATERMELON", new VitaminSet(18, 3, 2, 1, 3, 3, (int)(6.3/550), 1, 0, 21, 0, 0, 0));
 		sourcesOfMinerals.put("WATERMELON", new MineralSet(1, 2, 4, 2, 5, 0, 1, 3, 3, 1, 0, 0, 0));
-	}
-	
-	public void populateVeggies() {
-		sourcesOfVitamins.put("ALFALFA", new VitaminSet(1, 2, 2, 1, 2, 1, (int)(4.8/550), 3, 0, 5, 0, 0, 13));
-		sourcesOfMinerals.put("ALFALFA", new MineralSet(1, 2, 2, 2, 1, 0, 2, 3, 3, 0, 0, 0, 0));
 	}
 	
 	public void sortNutrientsByDate() {
