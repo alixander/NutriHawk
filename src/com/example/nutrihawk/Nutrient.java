@@ -159,4 +159,13 @@ public class Nutrient {
 	public ArrayList<Integer> getSourcesCount() {
 		return sourcesCount;
 	}
+	
+	public int getSourceAmount(String food_name, String nutrient_name, VitaminSet vitamins, MineralSet minerals) {
+		boolean isMineral = true;
+		if (nutrient_name.toLowerCase().contains("vitamin")) {
+			isMineral = false;
+		}
+		//implement.
+		return 0;
+	}
 }

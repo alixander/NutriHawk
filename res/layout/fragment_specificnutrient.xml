@@ -23,6 +23,7 @@
         android:textSize="15sp"
         android:text="fillerfiller"
         android:layout_marginTop="20dp"
+        android:layout_below="@id/nutrient_name"
         />
     
     <LinearLayout

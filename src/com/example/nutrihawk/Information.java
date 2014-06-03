@@ -67,23 +67,73 @@ public class Information {
 	}
 	
 	public void populateFruits() {
-		sourcesOfVitamins.put("APPLE", new VitaminSet(2, 1, 2, 1, 1, 3, (int)(3.7/550), 1, 0, 8, 0, 1, 2));
-		sourcesOfMinerals.put("APPLE", new MineralSet(1, 1, 2, 1, 4, 0, 0, 2, 2, 0, 0, 0, 0));
-		
-		sourcesOfVitamins.put("ORANGE", new VitaminSet(8, 10, 4, 3, 5, 5, (int)(13.9/550), 14, 0, 160, 0, 2, 0));
-		sourcesOfMinerals.put("ORANGE", new MineralSet(7, 1, 4, 3, 9, 0, 1, 4, 2, 1, 0, 0, 0));	
-		
-		sourcesOfVitamins.put("BANANA", new VitaminSet(3, 5, 10, 7, 8, 41, (int)(22/550), 11, 0, 33, 0, 1, 1));
-		sourcesOfMinerals.put("BANANA", new MineralSet(1, 3, 15, 5, 23, 0, 2, 9, 30, 3, 0, 0, 0));
-		
-		sourcesOfVitamins.put("BLACKBERRY", new VitaminSet(6, 2, 2, 5, 4, 2, (int)(12.2/550), 9, 0, 50, 0, 8, 36));
-		sourcesOfMinerals.put("BLACKBERRY", new MineralSet(4, 5, 7, 3, 7, 0, 5, 12, 47, 1, 0, 0, 0));
-		
-		sourcesOfVitamins.put("STRAWBERRY", new VitaminSet(0, 2, 2, 3, 2, 4, (int)(8.7/550), 9, 0, 149, 0, 2, 4));
-		sourcesOfMinerals.put("STRAWBERRY", new MineralSet(2, 3, 5, 4, 7, 0, 1, 4, 29, 1, 0, 0, 0));
-		
-		sourcesOfVitamins.put("WATERMELON", new VitaminSet(18, 3, 2, 1, 3, 3, (int)(6.3/550), 1, 0, 21, 0, 0, 0));
-		sourcesOfMinerals.put("WATERMELON", new MineralSet(1, 2, 4, 2, 5, 0, 1, 3, 3, 1, 0, 0, 0));
+		sourcesOfVitamins.put("APPLE", new VitaminSet(0, 0, 1, 0, 0, 1, 0, 0, 2, 0, 0, 0));
+		sourcesOfMinerals.put("APPLE", new MineralSet(0, 0, 0, 0, 1, 0, 0, 1, 1));
+		sourcesOfVitamins.put("AVOCADO", new VitaminSet(1, 1, 3, 3, 5, 4, 7, 0, 5, 0, 3, 9));
+		sourcesOfMinerals.put("AVOCADO", new MineralSet(0, 1, 2, 2, 5, 0, 1, 3, 2));
+		sourcesOfVitamins.put("BANANA", new VitaminSet(0, 1, 1, 1, 1, 6, 2, 0, 5, 0, 0, 0));
+		sourcesOfMinerals.put("BANANA", new MineralSet(0, 0, 2, 1, 3, 0, 0, 1, 4));
+		sourcesOfVitamins.put("BLACKBERRIES", new VitaminSet(1, 0, 1, 1, 1, 0, 2, 0, 12, 0, 2, 8));
+		sourcesOfMinerals.put("BLACKBERRIES", new MineralSet(1, 1, 2, 1, 2, 0, 1, 3, 11));
+		sourcesOfVitamins.put("BLUEBERRIES", new VitaminSet(0, 1, 1, 1, 0, 1, 0, 0, 5, 0, 1, 8));
+		sourcesOfMinerals.put("BLUEBERRIES", new MineralSet(0, 1, 0, 0, 1, 0, 0, 1, 6));
+		sourcesOfVitamins.put("BOYSENBERRIES", new VitaminSet(0, 1, 1, 1, 1, 1, 5, 0, 2, 0, 1, 3));
+		sourcesOfMinerals.put("BOYSENBERRIES", new MineralSet(1, 2, 1, 1, 1, 0, 0, 1, 9));
+		sourcesOfVitamins.put("CANTALOUPE", new VitaminSet(22, 1, 0, 1, 0, 1, 2, 0, 20, 0, 0, 1));
+		sourcesOfMinerals.put("CANTALOUPE", new MineralSet(0, 0, 1, 0, 3, 0, 0, 1, 1));
+		sourcesOfVitamins.put("CHERRIES", new VitaminSet(8, 1, 1, 1, 0, 1, 1, 0, 5, 0, 0, 1));
+		sourcesOfMinerals.put("CHERRIES", new MineralSet(1, 1, 1, 0, 2, 0, 0, 2, 2));
+		sourcesOfVitamins.put("CRANBERRIES", new VitaminSet(0, 0, 0, 0, 1, 1, 0, 0, 7, 0, 2, 2));
+		sourcesOfMinerals.put("CRANBERRIES", new MineralSet(0, 0, 0, 0, 1, 0, 0, 1, 6));
+		sourcesOfVitamins.put("DATES", new VitaminSet(1, 1, 1, 3, 3, 4, 1, 0, 0, 0, 0, 1));
+		sourcesOfMinerals.put("DATES", new MineralSet(2, 2, 4, 2, 7, 0, 1, 6, 5));
+		sourcesOfVitamins.put("GRAPEFRUIT", new VitaminSet(8, 1, 1, 0, 1, 1, 1, 0, 17, 0, 0, 0));
+		sourcesOfMinerals.put("GRAPEFRUIT", new MineralSet(1, 0, 1, 1, 1, 0, 0, 1, 0));
+		sourcesOfVitamins.put("GRAPES", new VitaminSet(1, 2, 1, 0, 0, 2, 0, 0, 2, 0, 0, 6));
+		sourcesOfMinerals.put("GRAPES", new MineralSet(0, 1, 0, 0, 2, 0, 0, 1, 12));
+		sourcesOfVitamins.put("KIWI", new VitaminSet(1, 1, 0, 1, 1, 1, 2, 0, 51, 0, 2, 17));
+		sourcesOfMinerals.put("KIWI", new MineralSet(1, 1, 1, 1, 3, 0, 0, 2, 2));
+		sourcesOfVitamins.put("LEMON", new VitaminSet(0, 1, 0, 0, 1, 1, 1, 0, 29, 0, 0, 0));
+		sourcesOfMinerals.put("LEMON", new MineralSet(1, 1, 1, 1, 1, 0, 0, 1, 0));
+		sourcesOfVitamins.put("LIMES", new VitaminSet(0, 1, 0, 0, 1, 1, 1, 0, 16, 0, 0, 0));
+		sourcesOfMinerals.put("LIMES", new MineralSet(1, 1, 0, 1, 1, 0, 0, 1, 0));
+		sourcesOfVitamins.put("LYCHEES", new VitaminSet(0, 0, 1, 1, 0, 2, 1, 0, 39, 0, 0, 0));
+		sourcesOfMinerals.put("LYCHEES", new MineralSet(0, 1, 1, 1, 2, 0, 0, 2, 1));
+		sourcesOfVitamins.put("MANGOS", new VitaminSet(5, 1, 1, 1, 1, 2, 1, 0, 15, 0, 2, 2));
+		sourcesOfMinerals.put("MANGOS", new MineralSet(0, 0, 1, 0, 1, 0, 0, 2, 0));
+		sourcesOfVitamins.put("NECTARINES", new VitaminSet(2, 1, 1, 2, 1, 0, 0, 0, 3, 0, 1, 1));
+		sourcesOfMinerals.put("NECTARINES", new MineralSet(0, 1, 1, 1, 2, 0, 0, 1, 1));
+		sourcesOfVitamins.put("OLIVES", new VitaminSet(3, 0, 0, 0, 0, 1, 0, 0, 0, 0, 6, 1));
+		sourcesOfMinerals.put("OLIVES", new MineralSet(2, 1, 1, 0, 0, 21, 0, 2, 0));
+		sourcesOfVitamins.put("ORANGES", new VitaminSet(1, 2, 1, 0, 1, 1, 2, 0, 29, 0, 0, 0));
+		sourcesOfMinerals.put("ORANGES", new MineralSet(1, 0, 1, 0, 2, 0, 0, 1, 0));
+		sourcesOfVitamins.put("PAPAYAS", new VitaminSet(7, 1, 1, 1, 1, 0, 3, 0, 34, 0, 1, 1));
+		sourcesOfMinerals.put("PAPAYAS", new MineralSet(1, 0, 1, 0, 2, 0, 0, 0, 0));
+		sourcesOfVitamins.put("PASSIONFRUIT", new VitaminSet(8, 0, 3, 2, 0, 2, 1, 0, 17, 0, 0, 0));
+		sourcesOfMinerals.put("PASSIONFRUIT", new MineralSet(0, 3, 2, 2, 3, 0, 0, 1, 0));
+		sourcesOfVitamins.put("PEACHES", new VitaminSet(2, 1, 1, 1, 1, 0, 0, 0, 4, 0, 1, 1));
+		sourcesOfMinerals.put("PEACHES", new MineralSet(0, 0, 1, 1, 2, 0, 0, 1, 1));
+		sourcesOfVitamins.put("PEARS", new VitaminSet(0, 0, 0, 0, 0, 0, 1, 0, 2, 0, 0, 2));
+		sourcesOfMinerals.put("PEARS", new MineralSet(0, 0, 1, 0, 1, 0, 0, 1, 1));
+		sourcesOfVitamins.put("PINEAPPLE", new VitaminSet(0, 2, 1, 1, 1, 2, 1, 0, 26, 0, 0, 0));
+		sourcesOfMinerals.put("PINEAPPLE", new MineralSet(0, 1, 1, 0, 1, 0, 0, 2, 15));
+		sourcesOfVitamins.put("PLUMS", new VitaminSet(2, 1, 1, 1, 0, 0, 0, 0, 5, 0, 0, 3));
+		sourcesOfMinerals.put("PLUMS", new MineralSet(0, 0, 1, 1, 1, 0, 0, 1, 1));
+		sourcesOfVitamins.put("POMEGRANATES", new VitaminSet(0, 1, 1, 0, 1, 1, 3, 0, 6, 0, 1, 7));
+		sourcesOfMinerals.put("POMEGRANATES", new MineralSet(0, 1, 1, 1, 2, 0, 1, 3, 2));
+		sourcesOfVitamins.put("RAISINS", new VitaminSet(0, 2, 2, 1, 0, 3, 0, 0, 1, 0, 0, 1));
+		sourcesOfMinerals.put("RAISINS", new MineralSet(2, 3, 3, 3, 7, 0, 0, 5, 5));
+		sourcesOfVitamins.put("RASPBERRIES", new VitaminSet(0, 1, 1, 1, 1, 1, 2, 0, 14, 0, 1, 3));
+		sourcesOfMinerals.put("RASPBERRIES", new MineralSet(1, 1, 2, 1, 1, 0, 1, 1, 11));
+		sourcesOfVitamins.put("STARFRUIT", new VitaminSet(0, 0, 0, 1, 1, 0, 1, 0, 19, 0, 0, 0));
+		sourcesOfMinerals.put("STARFRUIT", new MineralSet(0, 0, 1, 0, 1, 0, 0, 2, 1));
+		sourcesOfVitamins.put("STRAWBERRIES", new VitaminSet(0, 1, 0, 1, 0, 1, 2, 0, 32, 0, 0, 1));
+		sourcesOfMinerals.put("STRAWBERRIES", new MineralSet(1, 1, 1, 1, 1, 0, 0, 1, 6));
+		sourcesOfVitamins.put("TOMATOES", new VitaminSet(5, 1, 0, 1, 0, 1, 1, 0, 7, 0, 1, 3));
+		sourcesOfMinerals.put("TOMATOES", new MineralSet(0, 0, 1, 1, 2, 0, 0, 1, 2));
+		sourcesOfVitamins.put("WATERMELON", new VitaminSet(4, 1, 0, 0, 1, 1, 0, 0, 4, 0, 0, 0));
+		sourcesOfMinerals.put("WATERMELON", new MineralSet(0, 0, 1, 0, 1, 0, 0, 1, 1));
+
 	}
 	
 	public void sortNutrientsByDate() {

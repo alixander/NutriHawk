@@ -60,9 +60,9 @@ def main():
 			amount = str(int(round(get_amount(mapping, str(nutrition)))))
 			map2[map1[mapping]] = amount
 		vitamin_middle_chunk = map2["vitamin_a"] + ", " + map2["vitamin_b1"] + ", " + map2["vitamin_b2"] + ", " + map2["vitamin_b3"] + ", " +map2["vitamin_b5"] + ", " + map2["vitamin_b6"] + ", " + map2["vitamin_b9"] + ", " +map2["vitamin_b12"] + ", " +map2["vitamin_c"] + ", " +map2["vitamin_d"] + ", " +map2["vitamin_e"] + ", " + map2["vitamin_k"]
-		vitamin_string_output = 'sourcesOfVitamins.put('+ name.upper() + ', new VitaminSet('+ vitamin_middle_chunk + '));'
+		vitamin_string_output = 'sourcesOfVitamins.put("'+ name.upper() + '", new VitaminSet('+ vitamin_middle_chunk + '));'
 		mineral_middle_chunk = map2["calcium"] + ", " + map2["iron"] + ", " + map2["magnesium"] + ", " +map2["phosphorus"] + ", " + map2["potassium"] + ", " + map2["sodium"] + ", " + map2["zinc"] + ", " + map2["copper"] + ", " +map2["manganese"]
-		mineral_string_output = 'sourcesOfMinerals.put('+ name.upper() + ', new MineralSet('+ mineral_middle_chunk + '));'
+		mineral_string_output = 'sourcesOfMinerals.put("'+ name.upper() + '", new MineralSet('+ mineral_middle_chunk + '));'
 		f.write(vitamin_string_output + "\n" + mineral_string_output + "\n")
 	
 
