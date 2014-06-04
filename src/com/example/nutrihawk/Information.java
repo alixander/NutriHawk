@@ -12,6 +12,7 @@ import android.content.Context;
 import android.util.Log;
 
 public class Information {
+	public static final int THRESHOLD = 50;
 	private static final String TAG = "NutrientInformation";
 	private static final String FILENAME = "nutrients.json";
 	private NutrientInformationJSONSerializer mSerializer;
@@ -140,17 +141,17 @@ public class Information {
 		Collections.sort(mNutrients, new Comparator<Nutrient>() {
 			@Override
 			public int compare(Nutrient n1, Nutrient n2) {
-				if (n1.getDatesIntook().size() != 0 && n2.getDatesIntook().size() != 0) { //had both nutrients
-					LocalDate n1Date = n1.getDatesIntook().get(n1.getDatesIntook().size()-1);
-					LocalDate n2Date = n2.getDatesIntook().get(n2.getDatesIntook().size()-1);
+				if (n1.hasTaken() && n2.hasTaken()) { //had both nutrients
+					LocalDate n1Date = n1.getLastTaken();
+					LocalDate n2Date = n2.getLastTaken();
 					if (n1Date.getDayOfYear() > n2Date.getDayOfYear()) {
 						return 1;
 					} else {
 						return -1;
 					}
-				} else if (n1.getDatesIntook().size() != 0 && n2.getDatesIntook().size() == 0) { // never had second nutrient
+				} else if (n1.hasTaken() && !n2.hasTaken()) { // never had second nutrient
 					return 1;
-				} else if (n1.getDatesIntook().size() == 0 && n2.getDatesIntook().size() != 0) { // never had first nutrient
+				} else if (!n1.hasTaken() && n2.hasTaken()) { // never had first nutrient
 					return -1;
 				} else { // never had both
 					return 0;

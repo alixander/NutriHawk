@@ -8,7 +8,9 @@ import org.joda.time.LocalDate;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -24,12 +26,30 @@ public class StatusFragment extends ListFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+//		this.setHasOptionsMenu(true);
 		getActivity().setTitle(R.string.status_title);
 		mNutrients = Information.get(getActivity()).getNutrients();
 		copy = new ArrayList<Nutrient>(mNutrients);
 		Information.get(getActivity()).sortNutrientsByDate();
 		StatusItemAdapter adapter = new StatusItemAdapter(mNutrients);
 		setListAdapter(adapter);
+	}
+	
+//	@Override
+//	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//		super.onCreateOptionsMenu(menu, inflater);
+//		menu.clear();
+//		inflater.inflate(R.menu.status_menu, menu);
+//	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case R.id.menu_item_settings:
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
+		}
 	}
 	
 	@Override
@@ -131,10 +151,10 @@ public class StatusFragment extends ListFragment {
 			nameTextView.setText(n.getName());
 			TextView daysTextView = (TextView)convertView.findViewById(R.id.status_list_item_lastIntookView);
 			String output;
-			if (n.getDatesIntook().size() == 0) {
+			if (!n.hasTaken()) {
 				output = "Last Intake: Never";
 			} else {
-				LocalDate lastIntake = n.getDatesIntook().get(n.getDatesIntook().size()-1);
+				LocalDate lastIntake = n.getLastTaken();
 				if (lastIntake.getDayOfYear() == (LocalDate.now().getDayOfYear())) {
 					output = "Last Intake: Today";
 				} else {

@@ -35,6 +35,7 @@ public class SpecificNutrientFragment extends Fragment {
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
+		final HashMap<String, Double> food_amounts = new HashMap<String, Double>();
 		View v = inflater.inflate(R.layout.fragment_specificnutrient, parent, false);
 		
 		mNutrientNameField = (TextView)v.findViewById(R.id.nutrient_name);
@@ -90,7 +91,8 @@ public class SpecificNutrientFragment extends Fragment {
 				MineralSet mineralSources = Information.get(getActivity()).getMineralSources().get(source_name.toUpperCase());
 //				Log.d("MINS", mineralSources.toString());
 				int source_amount = getSourceAmount(mNutrient.getName(), vitaminSources, mineralSources);
-				Log.d("AMOUNT", "" + source_amount);
+//				Log.d("AMOUNT", "" + source_amount);
+				food_amounts.put(source_name, count*source_amount);
 		        return count * source_amount;
 		    }
 		});
@@ -106,17 +108,17 @@ public class SpecificNutrientFragment extends Fragment {
 		ArrayList<Integer> sourcesCount = mNutrient.getSourcesCount();
 		ArrayList<String> sources = mNutrient.getSources();
 		double total = 0; //to find ratio of each source amount
-		for (int i = 0; i < sourcesCount.size(); i++) {
-			total += sourcesCount.get(i);
+		for (int i = 0; i < sources.size(); i++) {
+			total += (food_amounts.get(sources.get(i)));
 		}
 		ArrayList<String> topFive_sources = new ArrayList<String>();
-		ArrayList<Integer> topFive_amounts = new ArrayList<Integer>();
+		ArrayList<Double> topFive_amounts = new ArrayList<Double>();
 		while (topFive_sources.size() != 5) {
-			int currentMostCount = 0;
+			double currentMostCount = 0.0;
 			String currentMost = "";
 			for (int i = 0; i < sources.size(); i++) {
-				if (sourcesCount.get(i) > currentMostCount && !topFive_sources.contains(sources.get(i))) {
-					currentMostCount = sourcesCount.get(i);
+				if (sourcesCount.get(i) * food_amounts.get(sources.get(i)) > currentMostCount && !topFive_sources.contains(sources.get(i))) {
+					currentMostCount = sourcesCount.get(i) * food_amounts.get(sources.get(i));
 					currentMost = sources.get(i);
 				}
 			}
@@ -140,12 +142,11 @@ public class SpecificNutrientFragment extends Fragment {
 		if (nutrient_name.toLowerCase().contains("vitamin")) {
 			isMineral = false;
 		}
-		//implement.
-		Log.d("NAME", nutrient_name);
+//		Log.d("NAME", nutrient_name);
 		if (isMineral) {
-			Log.d("YA", "" + minerals.getMineralAmount());
+//			Log.d("YA", "" + minerals.getMineralAmount());
 			HashMap<String, Integer> mineral_amounts = minerals.getMineralAmount();
-			Log.d("EY", String.valueOf(mineral_amounts.containsKey(nutrient_name.toUpperCase())));
+//			Log.d("EY", String.valueOf(mineral_amounts.containsKey(nutrient_name.toUpperCase())));
 			return (int)mineral_amounts.get(nutrient_name.toUpperCase());
 		}
 		HashMap<String, Integer> vitamin_amounts = vitamins.getVitaminAmount();

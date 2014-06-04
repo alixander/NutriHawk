@@ -160,4 +160,24 @@ public class Nutrient {
 	public ArrayList<Integer> getSourcesCount() {
 		return sourcesCount;
 	}
+	
+	public boolean hasTaken() {
+		ArrayList<Integer> amounts = getAmount();
+		for (int i = 0; i < getDatesIntook().size(); i++) {
+			if (amounts.get(i) > Information.THRESHOLD) { //default 50
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public LocalDate getLastTaken() {
+		ArrayList<Integer> amounts = getAmount();
+		for (int i = 0; i < getDatesIntook().size(); i++) {
+			if (amounts.get(i) > Information.THRESHOLD) {
+				return getDatesIntook().get(i);
+			}
+		}
+		return new LocalDate();
+	}
 }
