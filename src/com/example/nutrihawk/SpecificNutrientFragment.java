@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,9 +85,12 @@ public class SpecificNutrientFragment extends Fragment {
 		    public Object getValue(Object o) throws IllegalArgumentException {
 		        double count = (double)mNutrient.getSourcesCount().get(mNutrient.getSources().indexOf(o));
 		        String source_name = mNutrient.getSources().get(mNutrient.getSources().indexOf(o));
+//		        Log.d("SOURCE", source_name);
 		        VitaminSet vitaminSources = Information.get(getActivity()).getVitaminSources().get(source_name.toUpperCase());
 				MineralSet mineralSources = Information.get(getActivity()).getMineralSources().get(source_name.toUpperCase());
-				int source_amount = mNutrient.getSourceAmount(source_name, mNutrient.getName(), vitaminSources, mineralSources);
+//				Log.d("MINS", mineralSources.toString());
+				int source_amount = getSourceAmount(mNutrient.getName(), vitaminSources, mineralSources);
+				Log.d("AMOUNT", "" + source_amount);
 		        return count * source_amount;
 		    }
 		});
@@ -129,6 +133,23 @@ public class SpecificNutrientFragment extends Fragment {
 		topFive.setText(topFive_string);
 		
 		return v;
+	}
+	
+	public int getSourceAmount(String nutrient_name, VitaminSet vitamins, MineralSet minerals) {
+		boolean isMineral = true;
+		if (nutrient_name.toLowerCase().contains("vitamin")) {
+			isMineral = false;
+		}
+		//implement.
+		Log.d("NAME", nutrient_name);
+		if (isMineral) {
+			Log.d("YA", "" + minerals.getMineralAmount());
+			HashMap<String, Integer> mineral_amounts = minerals.getMineralAmount();
+			Log.d("EY", String.valueOf(mineral_amounts.containsKey(nutrient_name.toUpperCase())));
+			return (int)mineral_amounts.get(nutrient_name.toUpperCase());
+		}
+		HashMap<String, Integer> vitamin_amounts = vitamins.getVitaminAmount();
+		return vitamin_amounts.get(nutrient_name.toUpperCase());
 	}
 
 	private int[] getIDs() {

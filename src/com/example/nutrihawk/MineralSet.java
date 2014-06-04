@@ -1,12 +1,14 @@
 package com.example.nutrihawk;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class MineralSet {
-	private HashMap<String, Integer> mineralAmount = new HashMap();
+	public HashMap<String, Integer> mineralAmount;
 	
 	public MineralSet(int newCalcium, int newIron, int newMagnesium, int newPhosphorus, int newPotassium, int newSodium,
 			int newZinc, int newCopper, int newManganese) {
+		mineralAmount = new HashMap<String, Integer>();
 		
 		mineralAmount.put("calcium".toUpperCase(), (Integer)newCalcium);
 		mineralAmount.put("iron".toUpperCase(), (Integer)newIron);

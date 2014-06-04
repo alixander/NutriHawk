@@ -52,9 +52,9 @@ public class AddNutrientFragment extends Fragment {
 					MineralSet foodMinerals = mineralSources.get(newFood);
 					LocalDate now = new LocalDate();
 					for (Nutrient n : currentNutrients) {
-						if (foodVitamins.getVitaminAmount().containsKey(n.toString()) &&
-								foodVitamins.getVitaminAmount().get(n.toString()) != 0) {
-							n.addAmount(foodVitamins.getVitaminAmount().get(n.toString()), now);
+						if (foodVitamins.getVitaminAmount().containsKey(n.toString().toUpperCase()) &&
+								foodVitamins.getVitaminAmount().get(n.toString().toUpperCase()) != 0) {
+							n.addAmount(foodVitamins.getVitaminAmount().get(n.toString().toUpperCase()), now);
 							n.addSource(newFood);
 						} else if (foodMinerals.getMineralAmount().containsKey(n.toString().toUpperCase()) &&
 								foodMinerals.getMineralAmount().get(n.toString().toUpperCase()) != 0) {

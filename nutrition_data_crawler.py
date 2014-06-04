@@ -6,7 +6,13 @@ from bs4 import BeautifulSoup
 
 def main():
 
-	def get_amount(mapping, nutrition):
+	def get_serving(contents):
+		found_index = contents.find("selected value=")
+		start_index = contents[found_index:].find('"') + found_index + 1
+		end_index = contents[start_index+1:].find('"') + start_index
+		return float(contents[start_index:end_index+1])
+
+	def get_amount(mapping, nutrition, contents):
 		found_index = nutrition.find(mapping)
 		start_index = nutrition[found_index:].find('"')+found_index+1
 		end_index = nutrition[start_index+1:].find('"')+start_index
@@ -19,8 +25,9 @@ def main():
 		start_index = nutrition[found_index:].find('"')+found_index+1
 		end_index = nutrition[start_index+1:].find('"')+start_index
 		base_value = nutrition[start_index:end_index+1]
+		serving = get_serving(contents)
 		if daily_value != 0.0:
-			return 100 * (float(base_value)*33.0/100)/daily_value
+			return 100 * (float(base_value)*serving/100)/daily_value
 		else:
 			return 0.0
 
@@ -57,7 +64,7 @@ def main():
 		nutrition = re.findall(r'foodNutrients = ({.*?})', contents, re.DOTALL)
 		map2 = {}
 		for mapping in map1.keys():
-			amount = str(int(round(get_amount(mapping, str(nutrition)))))
+			amount = str(int(round(get_amount(mapping, str(nutrition), contents))))
 			map2[map1[mapping]] = amount
 		vitamin_middle_chunk = map2["vitamin_a"] + ", " + map2["vitamin_b1"] + ", " + map2["vitamin_b2"] + ", " + map2["vitamin_b3"] + ", " +map2["vitamin_b5"] + ", " + map2["vitamin_b6"] + ", " + map2["vitamin_b9"] + ", " +map2["vitamin_b12"] + ", " +map2["vitamin_c"] + ", " +map2["vitamin_d"] + ", " +map2["vitamin_e"] + ", " + map2["vitamin_k"]
 		vitamin_string_output = 'sourcesOfVitamins.put("'+ name.upper() + '", new VitaminSet('+ vitamin_middle_chunk + '));'
