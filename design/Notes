@@ -1,0 +1,35 @@
+Notes
+=================
+
+Home
+-----------------
+Button for "Check Status"
+Button for "Add Food"
+Text for "Most in need of"
+
+
+Food Categories
+-----------------
+Text field for adding food manually
+Add button to add what's in the text field
+At least 7 buttons in a grid layout for food categories (perhaps "juice" and other)
+
+Specific Foods
+-----------------
+Buttons/icons for each food
+Not sure what else, but maybe something else...
+
+Status
+-----------------
+3 buttons to sort the nutrients
+Each menu item display name of nutrient and last taken
+I'm thinking an option to set daily value percentage threshold (e.g. count as taken after 50%)
+
+Specific Nutrient
+-----------------
+Text area for nutrient description/function
+Text area for common/good food sources (not shown)
+Text area for deficiency symptoms (not shown)
+Line chart for intake over time
+Pie chart for food contributions
+Text area for top 5 contributing foods

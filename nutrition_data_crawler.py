@@ -31,7 +31,12 @@ def main():
 		else:
 			return 0.0
 
+	def write_button_code(name):
+		button_code.write('"' + name + '", ')
+
+
 	f = open('java_output', 'w')
+	button_code = open('button_java_code', 'w')
 	sources = open('sources', 'r')
 
 	map1 = {}
@@ -71,6 +76,8 @@ def main():
 		mineral_middle_chunk = map2["calcium"] + ", " + map2["iron"] + ", " + map2["magnesium"] + ", " +map2["phosphorus"] + ", " + map2["potassium"] + ", " + map2["sodium"] + ", " + map2["zinc"] + ", " + map2["copper"] + ", " +map2["manganese"]
 		mineral_string_output = 'sourcesOfMinerals.put("'+ name.upper() + '", new MineralSet('+ mineral_middle_chunk + '));'
 		f.write(vitamin_string_output + "\n" + mineral_string_output + "\n")
+
+		write_button_code(name)
 	
 
 if __name__ == '__main__':

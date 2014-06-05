@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,10 +22,14 @@ public class FoodCategoryFragment extends Fragment implements OnClickListener{
 	private String foodCategoryName;
 	private HashMap<String, VitaminSet> vitaminSources;
 	private HashMap<String, MineralSet> mineralSources;
+	private ArrayList<Button> all_buttons;
+	private ArrayList<String> foods;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		all_buttons = new ArrayList<Button>();
+		foods = new ArrayList<String>();
 		foodCategoryName = getActivity().getIntent().getStringExtra(EXTRA_FOOD_CATEGORY_ID).toUpperCase();
 		vitaminSources = Information.get(getActivity()).getVitaminSources();
 		mineralSources = Information.get(getActivity()).getMineralSources();
@@ -37,23 +43,39 @@ public class FoodCategoryFragment extends Fragment implements OnClickListener{
 		foodCategory.setText(foodCategoryName);
 		
 		if (foodCategoryName.equals("FRUITS")) {
-			Button appleButton = (Button)v.findViewById(R.id.food_apple_button);
-			appleButton.setOnClickListener(this);
+			populateFruitsButtons(v);
 		}
 		
-		
+		TableLayout table = (TableLayout)v.findViewById(R.id.food_category_table);
+		TableRow row = new TableRow(getActivity());
+		for (int i = 0; i < all_buttons.size(); i++) {
+			if (i % 3 == 0) {
+				row = new TableRow(getActivity());
+				table.addView(row);
+			}
+			row.addView(all_buttons.get(i));
+		}
 		
 		return v;
 	}
 	
+	private void populateFruitsButtons(View v) {
+		String[] fruits = {"alfalfa", "apple", "avocado", "banana", "blackberries", "blueberries", "boysenberries", "cantaloupe", "cherries", "cranberries", "dates", "grapefruit", "grapes", "kiwi", "lemon", "limes", "lychees", "mangos", "nectarines", "olives", "oranges", "papayas", "passionfruit", "peaches", "pears", "pineapple", "plums", "pomegranates", "raisins", "raspberries", "starfruit", "strawberries", "tomatoes", "watermelon"};
+		for (int i = 0; i < fruits.length; i++) {
+			foods.add(fruits[i]);
+			Button newButton = new Button(getActivity());
+			newButton.setText(fruits[i]);
+			newButton.setId(i);
+			newButton.setOnClickListener(this);
+			all_buttons.add(newButton);
+		}
+	}
+	
 @Override
 public void onClick(View v) {
-	String newFood = "nothing";
-	switch (v.getId()) {
-		case R.id.food_apple_button:
-			newFood = "APPLE";
-      	break;
-	}
+	Button b = (Button)v;
+	String newFood = b.getText().toString().toUpperCase();
+	
 	 
 	VitaminSet foodVitamins = vitaminSources.get(newFood);
 	MineralSet foodMinerals = mineralSources.get(newFood);

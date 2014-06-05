@@ -18,7 +18,12 @@ import android.widget.Toast;
 
 public class AddNutrientFragment extends Fragment {
 	Button mAddNutrientButton;
-	Button mFruitButton;
+	Button mFruitsButton;
+	Button mVeggiesButton;
+	Button mDairyButton;
+	Button mGrainsButton;
+	Button mMeatsButton;
+	Button mNutsButton;
 	EditText mNewFood;
 	
 	@Override
@@ -69,15 +74,54 @@ public class AddNutrientFragment extends Fragment {
 			}
 		});
 		
-		mFruitButton = (Button)v.findViewById(R.id.fruits_category_button);
-		mFruitButton.setOnClickListener(new OnClickListener() {
+		mFruitsButton = (Button)v.findViewById(R.id.fruits_category_button);
+		mFruitsButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				Intent i = new Intent(getActivity(), FoodCategoryActivity.class);
-				i.putExtra(FoodCategoryFragment.EXTRA_FOOD_CATEGORY_ID, (String)mFruitButton.getText());
-				startActivity(i);
+				startActivityWithIntent((String)mFruitsButton.getText());
+			}
+		});
+		
+		mVeggiesButton = (Button)v.findViewById(R.id.veggies_category_button);
+		mVeggiesButton.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				startActivityWithIntent((String)mVeggiesButton.getText());
+			}
+		});
+		
+		mDairyButton = (Button)v.findViewById(R.id.dairy_category_button);
+		mDairyButton.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				startActivityWithIntent((String)mDairyButton.getText());
+			}
+		});
+		
+		mGrainsButton = (Button)v.findViewById(R.id.grains_category_button);
+		mGrainsButton.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				startActivityWithIntent((String)mGrainsButton.getText());
+			}
+		});
+		
+		mMeatsButton = (Button)v.findViewById(R.id.meats_category_button);
+		mMeatsButton.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				startActivityWithIntent((String)mMeatsButton.getText());
+			}
+		});
+		
+		mNutsButton = (Button)v.findViewById(R.id.nuts_category_button);
+		mNutsButton.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				startActivityWithIntent((String)mNutsButton.getText());
 			}
 		});
 		
 		return v;
+	}
+	
+	private void startActivityWithIntent(String extra) {
+		Intent i = new Intent(getActivity(), FoodCategoryActivity.class);
+		i.putExtra(FoodCategoryFragment.EXTRA_FOOD_CATEGORY_ID, extra);
+		startActivity(i);
 	}
 }

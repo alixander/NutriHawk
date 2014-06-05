@@ -40,7 +40,7 @@
 	            />
 	        
 	        <Button
-	            android:id="@+id/vegetables_category_button"
+	            android:id="@+id/veggies_category_button"
 	            android:text="Veggies"
 	            android:layout_width="0dp"
 	            android:layout_height="100dp"
