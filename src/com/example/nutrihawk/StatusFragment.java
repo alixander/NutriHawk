@@ -152,13 +152,13 @@ public class StatusFragment extends ListFragment {
 			TextView daysTextView = (TextView)convertView.findViewById(R.id.status_list_item_lastIntookView);
 			String output;
 			if (!n.hasTaken()) {
-				output = "Last Intake: Never";
+				output = "Never";
 			} else {
 				LocalDate lastIntake = n.getLastTaken();
 				if (lastIntake.getDayOfYear() == (LocalDate.now().getDayOfYear())) {
-					output = "Last Intake: Today";
+					output = "Today";
 				} else {
-					output = "Last Intake: " + Days.daysBetween(lastIntake, new LocalDate()).getDays() + " days ago";
+					output = Days.daysBetween(lastIntake, new LocalDate()).getDays() + " days ago";
 				}
 			}
 			daysTextView.setText(output);

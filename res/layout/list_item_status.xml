@@ -13,6 +13,7 @@
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
         android:gravity="center"
+        android:textColor="@color/green"
         android:text="Nutrient Name"
         android:textSize="20dp" />
    	
@@ -25,6 +26,7 @@
         android:gravity="center"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
+        android:textColor="@color/green"
         android:text="Last Intake Date"
         android:textSize="20dp" />
 

@@ -4,15 +4,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
+import android.app.ActionBar;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.telerik.widget.chart.engine.axes.common.AxisPlotMode;
 import com.telerik.widget.chart.engine.databinding.DataPointBinding;
 import com.telerik.widget.chart.visualization.cartesianChart.RadCartesianChartView;
 import com.telerik.widget.chart.visualization.cartesianChart.axes.CategoricalAxis;
@@ -38,8 +40,8 @@ public class SpecificNutrientFragment extends Fragment {
 		final HashMap<String, Double> food_amounts = new HashMap<String, Double>();
 		View v = inflater.inflate(R.layout.fragment_specificnutrient, parent, false);
 		
-		mNutrientNameField = (TextView)v.findViewById(R.id.nutrient_name);
-		mNutrientNameField.setText(mNutrient.getName());
+		ActionBar ab = getActivity().getActionBar();
+		ab.setTitle(mNutrient.getName());
 		
 		TextView mNutrientDescription = (TextView)v.findViewById(R.id.nutrient_description);
 		int[] string_ids = getIDs();
@@ -50,10 +52,11 @@ public class SpecificNutrientFragment extends Fragment {
 			mNutrientDescription.setText(nutrient_description_string_id);
 		}
 		
+		//Line Chart
+		
 		RadCartesianChartView chartView = new RadCartesianChartView(getActivity().getBaseContext());
 
 		LinearLayout graph_holder = (LinearLayout) v.findViewById(R.id.graph_holder);
-		graph_holder.addView(chartView);
 
 		LineSeries lineSeries = new LineSeries(getActivity().getBaseContext());
 		lineSeries.setCategoryBinding(new DataPointBinding() {
@@ -68,14 +71,31 @@ public class SpecificNutrientFragment extends Fragment {
 		        return mNutrient.getAmount().get(mNutrient.getAmount().indexOf(o));
 		    }
 		});
+		
+		//todo: think about how days of zero intake should still count as day in last week
+		ArrayList<Integer> lastWeek = new ArrayList<Integer>();
+		for (int i = 0; i < mNutrient.getAmount().size(); i++) {
+			if (mNutrient.getAmount().size()-i <= 7) {
+				lastWeek.add(mNutrient.getAmount().get(i));
+			}
+		}
 		lineSeries.setData(mNutrient.getAmount());
+		String green = "#355d3d";
+		lineSeries.setStrokeColor(Color.RED);
+		lineSeries.setStrokeThickness(15);
 		chartView.getSeries().add(lineSeries);
 		
 		CategoricalAxis horizontalAxis = new CategoricalAxis(getActivity().getBaseContext());
+		horizontalAxis.setPlotMode(AxisPlotMode.ON_TICKS_PADDED);
 		chartView.setHorizontalAxis(horizontalAxis);
 
 		LinearAxis verticalAxis = new LinearAxis(getActivity().getBaseContext());
+		verticalAxis.setMajorStep(20);
 		chartView.setVerticalAxis(verticalAxis);
+		
+		graph_holder.addView(chartView);
+		
+		//Pie Chart
 		
 		LinearLayout pie_holder = (LinearLayout) v.findViewById(R.id.pie_holder);
 		RadPieChartView pieChartView = new RadPieChartView(getActivity().getBaseContext());
@@ -130,11 +150,15 @@ public class SpecificNutrientFragment extends Fragment {
 		}
 		for (int i = 0; i < topFive_sources.size(); i++) { // may not be enough for 5
 			double ratio = Math.round((topFive_amounts.get(i)/total)*100.0);
-			topFive_string += (topFive_sources.get(i) + " " + ratio + "%\n");
+			topFive_string += ("+ " + capitalizeFirstLetter(topFive_sources.get(i)) + " (" + ratio + "%)\n");
 		}
 		topFive.setText(topFive_string);
 		
 		return v;
+	}
+	
+	private String capitalizeFirstLetter(String s) {
+		return s.substring(0, 1).toUpperCase() + s.substring(1).toLowerCase();
 	}
 	
 	public int getSourceAmount(String nutrient_name, VitaminSet vitamins, MineralSet minerals) {

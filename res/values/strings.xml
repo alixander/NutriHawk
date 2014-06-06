@@ -13,7 +13,7 @@
     <string name="food_sources_menu_text">Food Sources</string>
     
     <string name="add_food_text">Add Food</string>
-    <string name="most_in_need_of_text">Currently most in need of...</string>
+    <string name="most_in_need_of_text">Currently most in need of</string>
     <string name="vitamin_filler_text">Vitamin A</string>
     
     <string name="status_title">Current Status</string>
@@ -22,27 +22,27 @@
     <string name="show_vitamins_only_text">Show Vitamins Only</string>
     <string name="show_minerals_only_text">Show Minerals Only</string>
     
-    <string name="vitamin_A_description">Needed for good eyesight and normal functioning of the immune system.</string>
-    <string name="vitamin_B1_description">Helps the body process carbohydrates and some protein.</string>
-    <string name="vitamin_B2_description">Used in many body processes, such as converting food into energy. It also participates in the metabolism of many drugs and helps in the production of red blood cells.</string>
-    <string name="vitamin_B3_description">Aids in digestion and converting food into energy. Also used by the body to help make cholesterol.</string>
-    <string name="vitamin_B5_description">Helps release energy from carbohydrates, fats, and proteins and helps produce red blood cells.</string>
-    <string name="vitamin_B6_description">Vital for a healthy nervous system. Helps the body break down proteins. Helps the body break down stored sugar.</string>
-    <string name="vitamin_B9_description">Utilize amino acids, produce nucleic acids, form blood cells in the bone marrow, ensure rapid cell growth in infancy, adolescence, and pregnancy, and control (together with vitamin B6 and vitamin B12) blood levels of the amino acid homocysteine.</string>
-    <string name="vitamin_B12_description">Needed for creating red blood cells and general cell division.</string>
-    <string name="vitamin_C_description">Helps promote a healthy immune system and is required to help make collagen, which holds cells together. It is also required for making chemical messengers in the brain.</string>
-    <string name="vitamin_D_description">Needed to process calcium and maintain bone health. May have other effects on all cells of the body.</string>
-    <string name="vitamin_E_description">Functions as an antioxidant.</string>
-    <string name="vitamin_K_description">Helps clot blood and maintains bone health.</string>
-    <string name="potassium_description">Aids in nervous system and muscle function. Also helps maintain a healthy balance of water in the blood and body tissues.</string>
-    <string name="sodium_description">Balances fluids in the body, helps send nerve impulses, and needed for muscle contractions.</string>
-    <string name="calcium_description">Helps build and maintain strong bones and teeth. Helps muscles function. Involved in cell communication and signaling.</string>
-    <string name="phosphorus_description">Helps cells function normally and help the body make energy. Helps red blood cells deliver oxygen. Important in the formation of bone.</string>
-    <string name="magnesium_description">Helps muscles and nerves function properly, steadies heart rhythm, maintains bone strength, and helps the body create energy and make proteins.</string>
-    <string name="zinc_description">Vital to many internal processes and supports immune function, reproduction, and the nervous system.</string>
-    <string name="iron_description">Needed to transport oxygen to all parts of the body via the red blood cells.</string>
-    <string name="manganese_description">Involved in bone formation and wound healing, metabolism of proteins, cholesterol, and carbohydrates. It is also an antioxidant.</string>
-    <string name="copper_description">Aids in metabolism of iron and red cell formation. Helps in the production of energy for cells.</string>
+    <string name="vitamin_A_description">+ Needed for good eyesight\n+ Needed for normal functioning of the immune system</string>
+    <string name="vitamin_B1_description">+ Helps the body process carbohydrates and some protein</string>
+    <string name="vitamin_B2_description">+ Used in many body processes, such as converting food into energy\n+ Participates in the metabolism of many drugs\n+ Helps in the production of red blood cells</string>
+    <string name="vitamin_B3_description">+ Aids in digestion\n+ Aids in converting food into energy\n+ Used by the body to help make cholesterol</string>
+    <string name="vitamin_B5_description">+ Helps release energy from carbohydrates, fats, and proteins\n+ Helps produce red blood cells</string>
+    <string name="vitamin_B6_description">+ Vital for a healthy nervous system\n+ Helps the body break down proteins\n+ Helps the body break down stored sugar</string>
+    <string name="vitamin_B9_description">+ Utilize amino acids\n+ Produce nucleic acids\n+ Form blood cells in the bone marrow\n+ Ensure rapid cell growth in infancy, adolescence, and pregnancy\n+ Control (together with vitamin B6 and vitamin B12) blood levels of the amino acid homocysteine</string>
+    <string name="vitamin_B12_description">+ Needed for creating red blood cells and general cell division</string>
+    <string name="vitamin_C_description">+ Helps promote a healthy immune system\n+ Is required to help make collagen, which holds cells together\n+ Is required for making chemical messengers in the brain</string>
+    <string name="vitamin_D_description">+ Needed to process calcium and maintain bone health\n+ May have other effects on all cells of the body</string>
+    <string name="vitamin_E_description">+ Functions as an antioxidant</string>
+    <string name="vitamin_K_description">+ Helps clot blood\n+ Maintains bone health</string>
+    <string name="potassium_description">+ Aids in nervous system and muscle function\n+ Helps maintain a healthy balance of water in the blood and body tissues</string>
+    <string name="sodium_description">+ Balances fluids in the body\n+ Helps send nerve impulses\n+ Needed for muscle contractions</string>
+    <string name="calcium_description">+ Helps build and maintain strong bones and teeth\n+ Helps muscles function\n+ Involved in cell communication and signaling.</string>
+    <string name="phosphorus_description">+ Helps cells function normally\n+ Helps the body make energy\n+ Helps red blood cells deliver oxygen\n+ Important in the formation of bone</string>
+    <string name="magnesium_description">+ Helps muscles and nerves function properly\n+ Steadies heart rhythm\n+ Maintains bone strength\n+ Helps the body create energy and make proteins</string>
+    <string name="zinc_description">+ Vital to many internal processes\n+ Supports immune function, reproduction, and the nervous system.</string>
+    <string name="iron_description">+ Needed to transport oxygen to all parts of the body via the red blood cells.</string>
+    <string name="manganese_description">+ Involved in bone formation and wound healing\n+ Aids in metabolism of proteins, cholesterol, and carbohydrates\n+ Acts as an antioxidant</string>
+    <string name="copper_description">+ Aids in metabolism of iron and red cell formation\n+ Helps in the production of energy for cells</string>
     
     <string name="vitamin_A_sources">Cod liver oil, sweet potatoes, carrots, leafy vegetables, and fortified foods such as breakfast cereals.</string>
     <string name="vitamin_B1_sources">Enriched, fortified, or whole-grain products such as bread, pasta, and cereals.</string>
@@ -89,9 +89,10 @@
     <string name="copper_deficiency">Anemia that is unresponsive to iron therapy but corrected by copper. Low WBC’s thus lower immunity. Rare in adults. Infants may develop a type of anemia marked by abnormal development of bones, nerve tissue and lungs.</string>
     <string name="manganese_deficiency">Joint pain, inflammation, arthritis, bursitis, dermatitis, and many diseases including osteoporosis, schizophrenia, diabetes, and epilepsy.</string>
     
-    <color name="green">#44c650</color>
+    <color name="green">#355d3d</color>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
+    <color name="lite_grey">#cbcbcb</color>
     <color name="dark_purp">#42296b</color>
     <color name="lite_purp">#6e47a0</color>
     <color name="dark_blue">#003f5e</color>
