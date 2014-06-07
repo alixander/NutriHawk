@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/check_status_text"
-        android:textSize="20dp"
+        android:textSize="25sp"
         android:layout_gravity="center_horizontal"
         android:textColor="@color/green"
         android:fontFamily="fonts/mensch-bold.ttf"
@@ -27,40 +27,54 @@
         android:text="@string/add_food_text"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:textSize="20dp"
+        android:textSize="25sp"
         android:textColor="@color/green"
         android:fontFamily="fonts/mensch-bold.ttf"
         android:background="@drawable/home_button"
-        android:paddingRight="52dp"
-        android:paddingLeft="52dp"
+        android:paddingRight="60dp"
+        android:paddingLeft="60dp"
         />
     
-    <TextView  
-	    android:layout_width="fill_parent" 
-	    android:layout_height="wrap_content" 
-	    android:gravity="center"
-	    android:text="@string/most_in_need_of_text"
-	    android:textSize="20sp"
-	    android:layout_marginTop="20dp"
-	    android:textColor="@color/white"
-	    android:fontFamily="fonts/Bariol_Regular.otf"
-	/>
-
-    <TextView
-        android:layout_width="fill_parent"
+    <LinearLayout 
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="@string/vitamin_filler_text"
-        android:fontFamily="fonts/mensch-bold.ttf"
-        android:textColor="@color/white"
-        android:textSize="25sp" />
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="70dp"
+        android:layout_marginTop="80dp"
+      	android:paddingBottom="20dp"
+        android:gravity="left"
+        android:orientation="vertical"
+        android:background="@drawable/bubble_green">
+    
+	    <TextView  
+		    android:layout_width="fill_parent" 
+		    android:layout_height="wrap_content" 
+		    android:gravity="center"
+		    android:text="@string/most_in_need_of_text"
+		    android:textSize="15sp"
+		    android:textColor="@color/green"
+		    android:fontFamily="fonts/Bariol_Regular.otf"
+		/>
+	
+	    <TextView
+	        android:id="@+id/most_in_need"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:text="@string/vitamin_filler_text"
+	        android:fontFamily="fonts/mensch-bold.ttf"
+	        android:textColor="@color/green"
+	        android:textSize="20sp" />
+	    
+	</LinearLayout>
     
     <ImageView
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="fill_parent"
         android:layout_gravity="bottom|right"
-        android:src="@drawable/hawk" />
+        android:scaleType="fitEnd"
+        android:background="@color/green"
+        android:src="@drawable/hawk_bg" />
    
 
 </LinearLayout>

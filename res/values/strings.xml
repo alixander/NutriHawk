@@ -93,6 +93,7 @@
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
     <color name="lite_grey">#E6E6E6</color>
+    <color name="lite_green">#CCFF99</color>
     <color name="dark_purp">#42296b</color>
     <color name="lite_purp">#6e47a0</color>
     <color name="dark_blue">#003f5e</color>

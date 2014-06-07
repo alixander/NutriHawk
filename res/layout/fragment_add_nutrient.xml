@@ -2,27 +2,40 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    <EditText
-        android:id="@+id/add_nutrient_edit"
-        android:layout_width="match_parent"
+    android:orientation="vertical" 
+    android:background="@color/green">
+    <LinearLayout 
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        />
-    <Button 
-        android:id="@+id/add_nutrient_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="48dp"
-        android:layout_marginRight="48dp"
-        android:text="Add"
-        />
+        android:orientation="horizontal"
+        android:padding="20dp"
+        android:layout_marginTop="40dp">
+	    <EditText
+	        android:id="@+id/add_nutrient_edit"
+	        android:layout_width="0dp"
+	        android:layout_weight="5"
+	        android:layout_height="40sp"
+	        android:background="@color/lite_grey"
+	        android:drawableLeft="@android:drawable/ic_menu_search"
+	        />
+	    
+	    <ImageButton
+	        android:id="@+id/add_nutrient_button"
+		    android:layout_width="0dp"
+		    android:layout_weight="1"
+		    android:layout_height="40sp"
+		    android:src="@drawable/plus24"
+		    android:scaleType="fitXY"
+		    android:background="@drawable/add_button" />
+	    
+	</LinearLayout>
     <TableLayout 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="40dp"
         android:stretchColumns="*"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:id="@+id/food_category_table">
         
         <TableRow
@@ -35,24 +48,39 @@
 	            android:id="@+id/fruits_category_button"
 	            android:text="Fruits"
 	            android:layout_width="0dp"
-	            android:layout_height="100dp"
+	            android:layout_height="70dp"
 	            android:layout_weight="1"
+	            android:textColor="@color/green"
+	            android:fontFamily="fonts/mensch-bold.ttf"
+	            android:background="@drawable/category_button"
+	            android:layout_margin="10dp"
+	            android:textSize="22sp"
 	            />
 	        
 	        <Button
 	            android:id="@+id/veggies_category_button"
 	            android:text="Veggies"
 	            android:layout_width="0dp"
-	            android:layout_height="100dp"
+	            android:layout_height="70dp"
 	            android:layout_weight="1"
+	            android:textColor="@color/green"
+	            android:fontFamily="fonts/mensch-bold.ttf"
+	            android:background="@drawable/category_button"
+	            android:layout_margin="10dp"
+	            android:textSize="22sp"
 	            />
 	        
 	        <Button
 	            android:id="@+id/dairy_category_button"
 	            android:text="Dairy"
 	            android:layout_width="0dp"
-	            android:layout_height="100dp"
+	            android:layout_height="70dp"
 	            android:layout_weight="1"
+	            android:textColor="@color/green"
+	            android:fontFamily="fonts/mensch-bold.ttf"
+	            android:background="@drawable/category_button"
+	            android:layout_margin="10dp"
+	            android:textSize="22sp"
 	            />
 	    </TableRow>
 	    
@@ -66,25 +94,87 @@
 	            android:id="@+id/grains_category_button"
 	            android:text="Grains"
 	            android:layout_width="0dp"
-	            android:layout_height="100dp"
+	            android:layout_height="70dp"
 	            android:layout_weight="1"
+	            android:textColor="@color/green"
+	            android:fontFamily="fonts/mensch-bold.ttf"
+	            android:background="@drawable/category_button"
+	            android:layout_margin="10dp"
+	            android:textSize="22sp"
 	            />
 	        
 	        <Button
 	            android:id="@+id/meats_category_button"
 	            android:text="Meats"
 	            android:layout_width="0dp"
-	            android:layout_height="100dp"
+	            android:layout_height="70dp"
 	            android:layout_weight="1"
+	            android:textColor="@color/green"
+	            android:fontFamily="fonts/mensch-bold.ttf"
+	            android:background="@drawable/category_button"
+	            android:layout_margin="10dp"
+	            android:textSize="22sp"
 	            />
 	        
 	        <Button
 	            android:id="@+id/nuts_category_button"
 	            android:text="Nuts"
 	            android:layout_width="0dp"
-	            android:layout_height="100dp"
+	            android:layout_height="70dp"
 	            android:layout_weight="1"
+	            android:textColor="@color/green"
+	            android:fontFamily="fonts/mensch-bold.ttf"
+	            android:background="@drawable/category_button"
+	            android:layout_margin="10dp"
+	            android:textSize="22sp"
 	            />
+	    </TableRow>
+	    
+        <TableRow
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:layout_weight="1"
+	        android:weightSum="3" >
+        
+	        <Button
+	            android:id="@+id/juices_category_button"
+	            android:text="Juice"
+	            android:layout_width="0dp"
+	            android:layout_height="70dp"
+	            android:layout_weight="1"
+	            android:textColor="@color/green"
+	            android:fontFamily="fonts/mensch-bold.ttf"
+	            android:background="@drawable/category_button"
+	            android:layout_margin="10dp"
+	            android:textSize="22sp"
+	            />
+	        
+	        <Button
+	            android:id="@+id/other_category_button"
+	            android:text="Other"
+	            android:layout_width="0dp"
+	            android:layout_height="70dp"
+	            android:layout_weight="1"
+	            android:textColor="@color/green"
+	            android:fontFamily="fonts/mensch-bold.ttf"
+	            android:background="@drawable/category_button"
+	            android:layout_margin="10dp"
+	            android:textSize="22sp"
+	            />
+	        
+	        <Button
+	            android:id="@+id/manual_category_button"
+	            android:text="Manual"
+	            android:layout_width="0dp"
+	            android:layout_height="70dp"
+	            android:layout_weight="1"
+	            android:textColor="@color/green"
+	            android:textSize="22sp"
+	            android:fontFamily="fonts/mensch-bold.ttf"
+	            android:background="@drawable/category_button"
+	            android:layout_margin="10dp"
+	            />
+	        
 	    </TableRow>
         
     </TableLayout>

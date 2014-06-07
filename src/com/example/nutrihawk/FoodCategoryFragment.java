@@ -5,8 +5,11 @@ import java.util.HashMap;
 
 import org.joda.time.LocalDate;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -38,9 +41,12 @@ public class FoodCategoryFragment extends Fragment implements OnClickListener{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_food_category, parent, false);
-		
-		TextView foodCategory = (TextView)v.findViewById(R.id.food_category_name);
-		foodCategory.setText(foodCategoryName);
+				
+		ActionBar ab = getActivity().getActionBar();
+		SpannableString s = new SpannableString(foodCategoryName);
+	    s.setSpan(new TypeSpan(getActivity(), "mensch-bold.ttf"), 0, s.length(),
+	            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		ab.setTitle(s);
 		
 		if (foodCategoryName.equals("FRUITS")) {
 			populateFruitsButtons(v);
@@ -65,6 +71,7 @@ public class FoodCategoryFragment extends Fragment implements OnClickListener{
 			foods.add(fruits[i]);
 			Button newButton = new Button(getActivity());
 			newButton.setText(fruits[i]);
+			newButton.setTextSize(10);
 			newButton.setId(i);
 			newButton.setOnClickListener(this);
 			all_buttons.add(newButton);
