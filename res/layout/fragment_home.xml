@@ -14,6 +14,7 @@
         android:textSize="20dp"
         android:layout_gravity="center_horizontal"
         android:textColor="@color/green"
+        android:fontFamily="fonts/mensch-bold.ttf"
         android:background="@drawable/home_button"
         android:paddingRight="35dp"
         android:paddingLeft="35dp"
@@ -28,6 +29,7 @@
         android:layout_marginTop="20dp"
         android:textSize="20dp"
         android:textColor="@color/green"
+        android:fontFamily="fonts/mensch-bold.ttf"
         android:background="@drawable/home_button"
         android:paddingRight="52dp"
         android:paddingLeft="52dp"
@@ -41,7 +43,7 @@
 	    android:textSize="20sp"
 	    android:layout_marginTop="20dp"
 	    android:textColor="@color/white"
-	    android:fontFamily="fonts/Roboto-Light.ttf"
+	    android:fontFamily="fonts/Bariol_Regular.otf"
 	/>
 
     <TextView
@@ -50,6 +52,7 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="@string/vitamin_filler_text"
+        android:fontFamily="fonts/mensch-bold.ttf"
         android:textColor="@color/white"
         android:textSize="25sp" />
     

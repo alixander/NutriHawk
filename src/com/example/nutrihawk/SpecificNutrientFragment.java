@@ -1,13 +1,20 @@
 package com.example.nutrihawk;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
+
+import org.joda.time.LocalDate;
 
 import android.app.ActionBar;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,18 +48,56 @@ public class SpecificNutrientFragment extends Fragment {
 		View v = inflater.inflate(R.layout.fragment_specificnutrient, parent, false);
 		
 		ActionBar ab = getActivity().getActionBar();
-		ab.setTitle(mNutrient.getName());
+		SpannableString s = new SpannableString(mNutrient.getName().toUpperCase());
+	    s.setSpan(new TypeSpan(getActivity(), "mensch-bold.ttf"), 0, s.length(),
+	            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		ab.setTitle(s);
 		
 		TextView mNutrientDescription = (TextView)v.findViewById(R.id.nutrient_description);
 		int[] string_ids = getIDs();
 		int nutrient_description_string_id = string_ids[0];
 		int nutrient_sources_string_id = string_ids[1];
 		int nutrient_deficiencies_string_id = string_ids[2];
-		if (nutrient_description_string_id != 0) {
-			mNutrientDescription.setText(nutrient_description_string_id);
+		
+		List<String> benefits = Arrays.asList(getString(nutrient_description_string_id).split(",[ ]*"));
+		TextView benefits_section = (TextView)v.findViewById(R.id.nutrient_description);
+		String benefits_output = "";
+		for (String benefit : benefits) {
+			benefits_output += ("<b>+</b> " + capitalizeFirstLetter(benefit) + "<br>");
 		}
+		benefits_section.setText(Html.fromHtml(benefits_output));
+
+		List<String> rich_sources = Arrays.asList(getString(nutrient_sources_string_id).split(",[ ]*"));
+		TextView left_column = (TextView)v.findViewById(R.id.rich_sources_left_column);
+		TextView right_column = (TextView)v.findViewById(R.id.rich_sources_right_column);
+		String left_string = "";
+		String right_string = "";
+		for (int i = 0; i < rich_sources.size(); i++) {
+			String newline = "<b>+</b> " + capitalizeFirstLetter(rich_sources.get(i))+"<br>";
+			if (i <= rich_sources.size()/2) {
+				left_string += newline;
+			} else {
+				right_string += newline;
+			}
+		}
+		left_column.setText(Html.fromHtml(left_string));
+		right_column.setText(Html.fromHtml(right_string));
+		
+		TextView deficiency_section = (TextView)v.findViewById(R.id.deficiency_symptoms);
+		List<String> deficiencies = Arrays.asList(getString(nutrient_deficiencies_string_id).split(",[ ]*"));
+		String output = "";
+		for (String deficiency : deficiencies) {
+			output += ("<b>+</b> " + capitalizeFirstLetter(deficiency) + "<br>");
+		}
+		deficiency_section.setText(Html.fromHtml(output));
 		
 		//Line Chart
+		
+		final ArrayList<LocalDate> validDates = new ArrayList<LocalDate>(); //dates in past week
+		LocalDate currentDate = new LocalDate();
+		for (int i = 0; i < 7; i++) {
+			validDates.add(0, currentDate.minusDays(i));
+		}
 		
 		RadCartesianChartView chartView = new RadCartesianChartView(getActivity().getBaseContext());
 
@@ -62,26 +107,22 @@ public class SpecificNutrientFragment extends Fragment {
 		lineSeries.setCategoryBinding(new DataPointBinding() {
 		    @Override
 		    public Object getValue(Object o) {
-		        return mNutrient.getDatesIntook().get(mNutrient.getAmount().indexOf(o)).toString("dd/yy");
+		        return validDates.get(validDates.indexOf(o)).toString("MMM dd");
 		    }
 		});
 		lineSeries.setValueBinding(new DataPointBinding() {
 		    @Override
 		    public Object getValue(Object o) {
-		        return mNutrient.getAmount().get(mNutrient.getAmount().indexOf(o));
+		    	for (LocalDate intakeDate : mNutrient.getDatesIntook()) {
+		    		if (intakeDate.getDayOfYear() == ((LocalDate)o).getDayOfYear()) {
+		    			return mNutrient.getAmount().get(mNutrient.getDatesIntook().indexOf(o));
+		    		}
+		    	}
+		    	return 0;
 		    }
 		});
 		
-		//todo: think about how days of zero intake should still count as day in last week
-		ArrayList<Integer> lastWeek = new ArrayList<Integer>();
-		for (int i = 0; i < mNutrient.getAmount().size(); i++) {
-			if (mNutrient.getAmount().size()-i <= 7) {
-				lastWeek.add(mNutrient.getAmount().get(i));
-			}
-		}
-		lineSeries.setData(mNutrient.getAmount());
-		String green = "#355d3d";
-		lineSeries.setStrokeColor(Color.RED);
+		lineSeries.setData(validDates);
 		lineSeries.setStrokeThickness(15);
 		chartView.getSeries().add(lineSeries);
 		
@@ -92,7 +133,7 @@ public class SpecificNutrientFragment extends Fragment {
 		LinearAxis verticalAxis = new LinearAxis(getActivity().getBaseContext());
 		verticalAxis.setMajorStep(20);
 		chartView.setVerticalAxis(verticalAxis);
-		
+		lineSeries.setStrokeColor(Color.parseColor("#355d3d"));
 		graph_holder.addView(chartView);
 		
 		//Pie Chart
@@ -106,12 +147,9 @@ public class SpecificNutrientFragment extends Fragment {
 		    public Object getValue(Object o) throws IllegalArgumentException {
 		        double count = (double)mNutrient.getSourcesCount().get(mNutrient.getSources().indexOf(o));
 		        String source_name = mNutrient.getSources().get(mNutrient.getSources().indexOf(o));
-//		        Log.d("SOURCE", source_name);
 		        VitaminSet vitaminSources = Information.get(getActivity()).getVitaminSources().get(source_name.toUpperCase());
 				MineralSet mineralSources = Information.get(getActivity()).getMineralSources().get(source_name.toUpperCase());
-//				Log.d("MINS", mineralSources.toString());
 				int source_amount = getSourceAmount(mNutrient.getName(), vitaminSources, mineralSources);
-//				Log.d("AMOUNT", "" + source_amount);
 				food_amounts.put(source_name, count*source_amount);
 		        return count * source_amount;
 		    }
@@ -150,9 +188,9 @@ public class SpecificNutrientFragment extends Fragment {
 		}
 		for (int i = 0; i < topFive_sources.size(); i++) { // may not be enough for 5
 			double ratio = Math.round((topFive_amounts.get(i)/total)*100.0);
-			topFive_string += ("+ " + capitalizeFirstLetter(topFive_sources.get(i)) + " (" + ratio + "%)\n");
+			topFive_string += ("<b>+</b> " + capitalizeFirstLetter(topFive_sources.get(i)) + " (" + ratio + "%)<br>");
 		}
-		topFive.setText(topFive_string);
+		topFive.setText(Html.fromHtml(topFive_string));
 		
 		return v;
 	}
@@ -166,11 +204,8 @@ public class SpecificNutrientFragment extends Fragment {
 		if (nutrient_name.toLowerCase().contains("vitamin")) {
 			isMineral = false;
 		}
-//		Log.d("NAME", nutrient_name);
 		if (isMineral) {
-//			Log.d("YA", "" + minerals.getMineralAmount());
 			HashMap<String, Integer> mineral_amounts = minerals.getMineralAmount();
-//			Log.d("EY", String.valueOf(mineral_amounts.containsKey(nutrient_name.toUpperCase())));
 			return (int)mineral_amounts.get(nutrient_name.toUpperCase());
 		}
 		HashMap<String, Integer> vitamin_amounts = vitamins.getVitaminAmount();
@@ -183,48 +218,90 @@ public class SpecificNutrientFragment extends Fragment {
 		int sources_id = 0;
 		int deficiency_id = 0;
 		if (nutrient_name.equals("Vitamin A")) {
-			description_id = R.string.vitamin_A_description;
-		} else if (nutrient_name.equals("Vitamin B1")) {
-			description_id = R.string.vitamin_B1_description;
-		} else if (nutrient_name.equals("Vitamin B2")) {
-			description_id = R.string.vitamin_B2_description;
-		} else if (nutrient_name.equals("Vitamin B3")) {
-			description_id = R.string.vitamin_B3_description;
-		} else if (nutrient_name.equals("Vitamin B5")) {
-			description_id = R.string.vitamin_B5_description;
-		} else if (nutrient_name.equals("Vitamin B6")) {
-			description_id = R.string.vitamin_B6_description;
-		} else if (nutrient_name.equals("Vitamin B9")) {
-			description_id = R.string.vitamin_B9_description;
-		} else if (nutrient_name.equals("Vitamin B12")) {
-			description_id = R.string.vitamin_B12_description;
-		} else if (nutrient_name.equals("Vitamin C")) {
-			description_id = R.string.vitamin_C_description;
-		} else if (nutrient_name.equals("Vitamin D")) {
-			description_id = R.string.vitamin_D_description;
-		} else if (nutrient_name.equals("Vitamin E")) {
-			description_id = R.string.vitamin_E_description;
-		} else if (nutrient_name.equals("Vitamin K")) {
-			description_id = R.string.vitamin_K_description;
-		} else if (nutrient_name.equals("Calcium")) {
-			description_id = R.string.calcium_description;
-		} else if (nutrient_name.equals("Iron")) {
-			description_id = R.string.iron_description;
-		} else if (nutrient_name.equals("Magnesium")) {
-			description_id = R.string.magnesium_description;
-		} else if (nutrient_name.equals("Phosphorus")) {
-			description_id = R.string.phosphorus_description;
-		} else if (nutrient_name.equals("Potassium")) {
-			description_id = R.string.potassium_description;
-		} else if (nutrient_name.equals("Sodium")) {
-			description_id = R.string.sodium_description;
-		} else if (nutrient_name.equals("Zinc")) {
-			description_id = R.string.zinc_description;
-		} else if (nutrient_name.equals("Copper")) {
-			description_id = R.string.copper_description;
-		} else if (nutrient_name.equals("Manganese")) {
-			description_id = R.string.manganese_description;
-		}
+            description_id = R.string.vitamin_A_description;
+            sources_id = R.string.vitamin_A_sources;
+            deficiency_id = R.string.vitamin_A_deficiency;
+        } else if (nutrient_name.equals("Vitamin B1")) {
+            description_id = R.string.vitamin_B1_description;
+            sources_id = R.string.vitamin_B1_sources;
+            deficiency_id = R.string.vitamin_B1_deficiency;
+        } else if (nutrient_name.equals("Vitamin B2")) {
+            description_id = R.string.vitamin_B2_description;
+            sources_id = R.string.vitamin_B2_sources;
+            deficiency_id = R.string.vitamin_B2_deficiency;
+        } else if (nutrient_name.equals("Vitamin B3")) {
+            description_id = R.string.vitamin_B3_description;
+            sources_id = R.string.vitamin_B3_sources;
+            deficiency_id = R.string.vitamin_B3_deficiency;
+        } else if (nutrient_name.equals("Vitamin B5")) {
+            description_id = R.string.vitamin_B5_description;
+            sources_id = R.string.vitamin_B5_sources;
+            deficiency_id = R.string.vitamin_B5_deficiency;
+        } else if (nutrient_name.equals("Vitamin B6")) {
+            description_id = R.string.vitamin_B6_description;
+            sources_id = R.string.vitamin_B6_sources;
+            deficiency_id = R.string.vitamin_B6_deficiency;
+        } else if (nutrient_name.equals("Vitamin B9")) {
+            description_id = R.string.vitamin_B9_description;
+            sources_id = R.string.vitamin_B9_sources;
+            deficiency_id = R.string.vitamin_B9_deficiency;
+        } else if (nutrient_name.equals("Vitamin B12")) {
+            description_id = R.string.vitamin_B12_description;
+            sources_id = R.string.vitamin_B12_sources;
+            deficiency_id = R.string.vitamin_B12_deficiency;
+        } else if (nutrient_name.equals("Vitamin C")) {
+            description_id = R.string.vitamin_C_description;
+            sources_id = R.string.vitamin_C_sources;
+            deficiency_id = R.string.vitamin_C_deficiency;
+        } else if (nutrient_name.equals("Vitamin D")) {
+            description_id = R.string.vitamin_D_description;
+            sources_id = R.string.vitamin_D_sources;
+            deficiency_id = R.string.vitamin_D_deficiency;
+        } else if (nutrient_name.equals("Vitamin E")) {
+            description_id = R.string.vitamin_E_description;
+            sources_id = R.string.vitamin_E_sources;
+            deficiency_id = R.string.vitamin_E_deficiency;
+        } else if (nutrient_name.equals("Vitamin K")) {
+            description_id = R.string.vitamin_K_description;
+            sources_id = R.string.vitamin_K_sources;
+            deficiency_id = R.string.vitamin_K_deficiency;
+        } else if (nutrient_name.equals("Calcium")) {
+            description_id = R.string.calcium_description;
+            sources_id = R.string.calcium_sources;
+            deficiency_id = R.string.calcium_deficiency;
+        } else if (nutrient_name.equals("Iron")) {
+            description_id = R.string.iron_description;
+            sources_id = R.string.iron_sources;
+            deficiency_id = R.string.iron_deficiency;
+        } else if (nutrient_name.equals("Magnesium")) {
+            description_id = R.string.magnesium_description;
+            sources_id = R.string.magnesium_sources;
+            deficiency_id = R.string.magnesium_deficiency;
+        } else if (nutrient_name.equals("Phosphorus")) {
+            description_id = R.string.phosphorus_description;
+            sources_id = R.string.phosphorus_sources;
+            deficiency_id = R.string.phosphorus_deficiency;
+        } else if (nutrient_name.equals("Potassium")) {
+            description_id = R.string.potassium_description;
+            sources_id = R.string.potassium_sources;
+            deficiency_id = R.string.potassium_deficiency;
+        } else if (nutrient_name.equals("Sodium")) {
+            description_id = R.string.sodium_description;
+            sources_id = R.string.sodium_sources;
+            deficiency_id = R.string.sodium_deficiency;
+        } else if (nutrient_name.equals("Zinc")) {
+            description_id = R.string.zinc_description;
+            sources_id = R.string.zinc_sources;
+            deficiency_id = R.string.zinc_deficiency;
+        } else if (nutrient_name.equals("Copper")) {
+            description_id = R.string.copper_description;
+            sources_id = R.string.copper_sources;
+            deficiency_id = R.string.copper_deficiency;
+        } else if (nutrient_name.equals("Manganese")) {
+            description_id = R.string.manganese_description;
+            sources_id = R.string.manganese_sources;
+            deficiency_id = R.string.manganese_deficiency;
+        }
 		int[] output = {description_id, sources_id, deficiency_id};
 		return output;
 	}

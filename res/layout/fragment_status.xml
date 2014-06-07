@@ -19,6 +19,7 @@
             android:padding="10dp"
             android:layout_weight="1"
             android:background="@drawable/show_all_button"
+            android:fontFamily="fonts/mensch-bold.ttf"
             android:text="@string/show_all_text" />
 
 
@@ -30,6 +31,7 @@
             android:textColor="@color/green"
             android:padding="10dp"
             android:background="@drawable/show_button"
+            android:fontFamily="fonts/mensch-bold.ttf"
             android:text="@string/show_vitamins_only_text" />
         
         <Button
@@ -40,6 +42,7 @@
             android:textColor="@color/green"
             android:padding="10dp"
             android:background="@drawable/show_button"
+            android:fontFamily="fonts/mensch-bold.ttf"
             android:text="@string/show_minerals_only_text" />
     </LinearLayout>
     

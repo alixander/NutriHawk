@@ -5,9 +5,12 @@ import java.util.ArrayList;
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -66,6 +69,12 @@ public class StatusFragment extends ListFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_status, parent, false);
+		
+		ActionBar ab = getActivity().getActionBar();
+		SpannableString s = new SpannableString("CURRENT STATUS");
+	    s.setSpan(new TypeSpan(getActivity(), "mensch-bold.ttf"), 0, s.length(),
+	            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		ab.setTitle(s);
 		
 		Button show_all_button = (Button) v.findViewById(R.id.show_all_button);
 		show_all_button.setOnClickListener(new OnClickListener() {

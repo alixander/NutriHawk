@@ -137,7 +137,7 @@ public class Nutrient {
 			sourcesCount.add(1);
 		}
 	}
-	
+
 	public void addAmount(int amount, LocalDate date) {
 		// Adding to same day
 		if (amountEachDay.size() > 0 && date.getDayOfYear() == datesIntook.get(datesIntook.size()-1).getDayOfYear()) {
