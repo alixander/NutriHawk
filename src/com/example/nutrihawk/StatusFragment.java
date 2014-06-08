@@ -29,7 +29,6 @@ public class StatusFragment extends ListFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-//		this.setHasOptionsMenu(true);
 		getActivity().setTitle(R.string.status_title);
 		mNutrients = Information.get(getActivity()).getNutrients();
 		copy = new ArrayList<Nutrient>(mNutrients);
@@ -37,13 +36,6 @@ public class StatusFragment extends ListFragment {
 		StatusItemAdapter adapter = new StatusItemAdapter(mNutrients);
 		setListAdapter(adapter);
 	}
-	
-//	@Override
-//	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-//		super.onCreateOptionsMenu(menu, inflater);
-//		menu.clear();
-//		inflater.inflate(R.menu.status_menu, menu);
-//	}
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -132,6 +124,7 @@ public class StatusFragment extends ListFragment {
 		Nutrient n = ((StatusItemAdapter)getListAdapter()).getItem(position);
 		
 		Intent i = new Intent(getActivity(), SpecificNutrientActivity.class);
+//		Intent i = new Intent(getActivity(), NutrientPagerActivity.class);
 		i.putExtra(SpecificNutrientFragment.EXTRA_NUTRIENT_ID, n.getId());
 		startActivity(i);
 	}

@@ -35,6 +35,10 @@
             android:label="@string/add_nutrient_menu_text" >
         </activity>
         <activity
+            android:name="com.example.nutrihawk.NutrientPagerActivity"
+            android:label="Pager" >
+        </activity>
+        <activity
             android:name="com.example.nutrihawk.FoodSourcesActivity"
             android:label="@string/food_sources_menu_text" >
         </activity>

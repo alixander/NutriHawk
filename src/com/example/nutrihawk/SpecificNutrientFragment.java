@@ -38,8 +38,16 @@ public class SpecificNutrientFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		UUID nutrientId = (UUID)getActivity().getIntent().getSerializableExtra(EXTRA_NUTRIENT_ID);
+		UUID nutrientId = (UUID)getArguments().getSerializable(EXTRA_NUTRIENT_ID);;
 		mNutrient = Information.get(getActivity()).getNutrient(nutrientId);
+	}
+	
+	public static SpecificNutrientFragment newInstance(UUID nutrientId) {
+		Bundle args = new Bundle();
+		args.putSerializable(EXTRA_NUTRIENT_ID, nutrientId);
+		SpecificNutrientFragment fragment = new SpecificNutrientFragment();
+		fragment.setArguments(args);
+		return fragment;
 	}
 	
 	@Override

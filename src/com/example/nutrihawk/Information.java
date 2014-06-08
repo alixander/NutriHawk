@@ -63,6 +63,7 @@ public class Information {
 	public void populateFoods() {
 		populateFruits();
 		populateVeggies();
+		populateGrains();
 		populateNuts();
 	}
 	
@@ -148,8 +149,8 @@ public class Information {
 		sourcesOfMinerals.put("BAMBOO", new MineralSet(2, 4, 1, 9, 23, 0, 11, 14, 20));
 		sourcesOfVitamins.put("BEETS", new VitaminSet(1, 3, 3, 2, 2, 5, 37, 0, 11, 0, 0, 0));
 		sourcesOfMinerals.put("BEETS", new MineralSet(2, 6, 8, 5, 13, 4, 3, 5, 22));
-		sourcesOfVitamins.put("BAK CHOY", new VitaminSet(63, 2, 3, 2, 1, 7, 12, 0, 52, 0, 0, 40));
-		sourcesOfMinerals.put("BAK CHOY", new MineralSet(7, 3, 3, 3, 5, 2, 1, 1, 6));
+		sourcesOfVitamins.put("BOK CHOY", new VitaminSet(63, 2, 3, 2, 1, 7, 12, 0, 52, 0, 0, 40));
+		sourcesOfMinerals.put("BOK CHOY", new MineralSet(7, 3, 3, 3, 5, 2, 1, 1, 6));
 		sourcesOfVitamins.put("BROCCOLI", new VitaminSet(11, 4, 6, 3, 5, 8, 14, 0, 135, 0, 4, 116));
 		sourcesOfMinerals.put("BROCCOLI", new MineralSet(4, 4, 5, 6, 8, 1, 2, 2, 10));
 		sourcesOfVitamins.put("BRUSSELS SPROUTS", new VitaminSet(13, 8, 5, 3, 3, 10, 13, 0, 125, 0, 4, 195));
@@ -228,15 +229,34 @@ public class Information {
 		sourcesOfMinerals.put("TURNIPS", new MineralSet(4, 2, 4, 4, 7, 4, 2, 6, 9));
 	}
 	
-	public void populateNuts() {
-		sourcesOfVitamins.put("ALMONDS", new VitaminSet(0, 7, 70, 27, 3, 9, 11, 0, 0, 0, 179, 0));
-		sourcesOfMinerals.put("ALMONDS", new MineralSet(37, 35, 99, 67, 29, 0, 33, 81, 181));
+	public void populateGrains() {
 		sourcesOfVitamins.put("AMARANTH", new VitaminSet(0, 2, 3, 3, 0, 14, 14, 0, 0, 0, 2, 0));
 		sourcesOfMinerals.put("AMARANTH", new MineralSet(12, 29, 40, 36, 9, 1, 14, 18, 105));
 		sourcesOfVitamins.put("BARLEY", new VitaminSet(0, 9, 6, 16, 2, 9, 6, 0, 0, 0, 0, 2));
 		sourcesOfMinerals.put("BARLEY", new MineralSet(2, 12, 9, 8, 4, 0, 9, 8, 20));
 		sourcesOfVitamins.put("BUCKWHEAT", new VitaminSet(0, 11, 42, 60, 21, 18, 13, 0, 0, 0, 0, 0));
 		sourcesOfMinerals.put("BUCKWHEAT", new MineralSet(3, 21, 98, 59, 22, 0, 27, 93, 111));
+		sourcesOfVitamins.put("MILLET", new VitaminSet(0, 12, 8, 12, 3, 9, 8, 0, 0, 0, 0, 1));
+		sourcesOfMinerals.put("MILLET", new MineralSet(1, 6, 19, 17, 3, 0, 11, 14, 24));
+		sourcesOfVitamins.put("OATS", new VitaminSet(0, 79, 13, 7, 21, 9, 22, 0, 0, 0, 0, 0));
+		sourcesOfMinerals.put("OATS", new MineralSet(8, 41, 69, 82, 19, 0, 41, 49, 383));
+		sourcesOfVitamins.put("QUINOA", new VitaminSet(0, 13, 12, 4, 0, 11, 19, 0, 0, 0, 6, 0));
+		sourcesOfMinerals.put("QUINOA", new MineralSet(3, 15, 30, 28, 9, 1, 13, 18, 58));
+		sourcesOfVitamins.put("BROWN RICE", new VitaminSet(0, 12, 3, 15, 6, 14, 2, 0, 0, 0, 0, 1));
+		sourcesOfMinerals.put("BROWN RICE", new MineralSet(2, 5, 21, 16, 2, 0, 8, 10, 88));
+		sourcesOfVitamins.put("WILD RICE", new VitaminSet(0, 6, 8, 11, 3, 11, 11, 0, 0, 0, 2, 1));
+		sourcesOfMinerals.put("WILD RICE", new MineralSet(0, 5, 13, 13, 5, 0, 15, 10, 23));
+		sourcesOfVitamins.put("RYE", new VitaminSet(0, 36, 25, 36, 25, 25, 25, 0, 0, 0, 11, 12));
+		sourcesOfMinerals.put("RYE", new MineralSet(6, 25, 51, 63, 13, 0, 42, 38, 226));
+		sourcesOfVitamins.put("SPELT", new VitaminSet(0, 13, 3, 25, 0, 8, 6, 0, 0, 0, 3, 0));
+		sourcesOfMinerals.put("SPELT", new MineralSet(2, 18, 24, 29, 8, 0, 16, 21, 106));
+		sourcesOfVitamins.put("WHITE RICE", new VitaminSet(0, 2, 1, 3, 4, 2, 0, 0, 0, 0, 0, 0));
+		sourcesOfMinerals.put("WHITE RICE", new MineralSet(0, 1, 2, 1, 0, 0, 5, 4, 23));
+	}
+	
+	public void populateNuts() {
+		sourcesOfVitamins.put("ALMONDS", new VitaminSet(0, 7, 70, 27, 3, 9, 11, 0, 0, 0, 179, 0));
+		sourcesOfMinerals.put("ALMONDS", new MineralSet(37, 35, 99, 67, 29, 0, 33, 81, 181));
 		sourcesOfVitamins.put("CASHEWS", new VitaminSet(0, 8, 1, 1, 2, 6, 2, 0, 0, 0, 1, 12));
 		sourcesOfMinerals.put("CASHEWS", new MineralSet(1, 10, 20, 17, 5, 0, 11, 31, 23));
 		sourcesOfVitamins.put("CHESTNUTS", new VitaminSet(0, 3, 1, 2, 2, 6, 5, 0, 18, 0, 0, 0));
@@ -247,10 +267,6 @@ public class Information {
 		sourcesOfMinerals.put("HAZELNUTS", new MineralSet(13, 30, 47, 33, 22, 0, 19, 99, 355));
 		sourcesOfVitamins.put("MACADAMIAS", new VitaminSet(0, 107, 13, 17, 10, 18, 4, 0, 3, 0, 4, 0));
 		sourcesOfMinerals.put("MACADAMIAS", new MineralSet(11, 27, 44, 25, 14, 0, 12, 51, 277));
-		sourcesOfVitamins.put("MILLET", new VitaminSet(0, 12, 8, 12, 3, 9, 8, 0, 0, 0, 0, 1));
-		sourcesOfMinerals.put("MILLET", new MineralSet(1, 6, 19, 17, 3, 0, 11, 14, 24));
-		sourcesOfVitamins.put("OATS", new VitaminSet(0, 79, 13, 7, 21, 9, 22, 0, 0, 0, 0, 0));
-		sourcesOfMinerals.put("OATS", new MineralSet(8, 41, 69, 82, 19, 0, 41, 49, 383));
 		sourcesOfVitamins.put("PEANUTS", new VitaminSet(0, 62, 12, 88, 26, 25, 88, 0, 0, 0, 61, 0));
 		sourcesOfMinerals.put("PEANUTS", new MineralSet(13, 37, 61, 55, 29, 1, 32, 84, 141));
 		sourcesOfVitamins.put("PECANS", new VitaminSet(1, 48, 8, 6, 9, 11, 6, 0, 2, 0, 8, 5));
@@ -261,24 +277,12 @@ public class Information {
 		sourcesOfMinerals.put("PISTACHIOS", new MineralSet(13, 28, 37, 60, 36, 0, 18, 80, 74));
 		sourcesOfVitamins.put("PUMPKIN SEEDS", new VitaminSet(1, 1, 2, 1, 0, 1, 1, 0, 0, 0, 0, 0));
 		sourcesOfMinerals.put("PUMPKIN SEEDS", new MineralSet(4, 12, 42, 6, 17, 0, 44, 22, 16));
-		sourcesOfVitamins.put("QUINOA", new VitaminSet(0, 13, 12, 4, 0, 11, 19, 0, 0, 0, 6, 0));
-		sourcesOfMinerals.put("QUINOA", new MineralSet(3, 15, 30, 28, 9, 1, 13, 18, 58));
-		sourcesOfVitamins.put("BROWN RICE", new VitaminSet(0, 12, 3, 15, 6, 14, 2, 0, 0, 0, 0, 1));
-		sourcesOfMinerals.put("BROWN RICE", new MineralSet(2, 5, 21, 16, 2, 0, 8, 10, 88));
-		sourcesOfVitamins.put("WILD RICE", new VitaminSet(0, 6, 8, 11, 3, 11, 11, 0, 0, 0, 2, 1));
-		sourcesOfMinerals.put("WILD RICE", new MineralSet(0, 5, 13, 13, 5, 0, 15, 10, 23));
-		sourcesOfVitamins.put("RYE", new VitaminSet(0, 36, 25, 36, 25, 25, 25, 0, 0, 0, 11, 12));
-		sourcesOfMinerals.put("RYE", new MineralSet(6, 25, 51, 63, 13, 0, 42, 38, 226));
 		sourcesOfVitamins.put("SESAME SEEDS", new VitaminSet(0, 76, 21, 33, 1, 57, 35, 0, 0, 0, 2, 0));
 		sourcesOfMinerals.put("SESAME SEEDS", new MineralSet(140, 116, 126, 91, 19, 1, 74, 294, 177));
-		sourcesOfVitamins.put("SPELT", new VitaminSet(0, 13, 3, 25, 0, 8, 6, 0, 0, 0, 3, 0));
-		sourcesOfMinerals.put("SPELT", new MineralSet(2, 18, 24, 29, 8, 0, 16, 21, 106));
 		sourcesOfVitamins.put("SUNFLOWER SEEDS", new VitaminSet(0, 45, 10, 19, 5, 31, 26, 0, 1, 0, 76, 0));
 		sourcesOfMinerals.put("SUNFLOWER SEEDS", new MineralSet(4, 13, 37, 30, 8, 0, 15, 41, 45));
 		sourcesOfVitamins.put("WALNUTS", new VitaminSet(0, 27, 10, 7, 7, 31, 29, 0, 3, 0, 4, 4));
 		sourcesOfMinerals.put("WALNUTS", new MineralSet(11, 19, 46, 40, 15, 0, 24, 93, 200));
-		sourcesOfVitamins.put("WHITE RICE", new VitaminSet(0, 2, 1, 3, 4, 2, 0, 0, 0, 0, 0, 0));
-		sourcesOfMinerals.put("WHITE RICE", new MineralSet(0, 1, 2, 1, 0, 0, 5, 4, 23));
 	}
 	
 	public void sortNutrientsByDate() {
