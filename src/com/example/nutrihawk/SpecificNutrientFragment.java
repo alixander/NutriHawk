@@ -195,7 +195,7 @@ public class SpecificNutrientFragment extends Fragment {
 		return v;
 	}
 	
-	private String capitalizeFirstLetter(String s) {
+	public static String capitalizeFirstLetter(String s) {
 		return s.substring(0, 1).toUpperCase() + s.substring(1).toLowerCase();
 	}
 	

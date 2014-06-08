@@ -6,6 +6,10 @@ import java.util.HashMap;
 import org.joda.time.LocalDate;
 
 import android.app.ActionBar;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.LightingColorFilter;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Spannable;
@@ -17,7 +21,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
+import android.widget.TableRow.LayoutParams;
 import android.widget.Toast;
 
 public class FoodCategoryFragment extends Fragment implements OnClickListener{
@@ -49,7 +53,14 @@ public class FoodCategoryFragment extends Fragment implements OnClickListener{
 		ab.setTitle(s);
 		
 		if (foodCategoryName.equals("FRUITS")) {
-			populateFruitsButtons(v);
+			String[] food_list = {"apple", "avocado", "banana", "blackberries", "blueberries", "boysenberries", "cantaloupe", "cherries", "cranberries", "dates", "grapefruit", "grapes", "kiwi", "lemon", "limes", "lychees", "mangos", "nectarines", "olives", "oranges", "papayas", "passionfruit", "peaches", "pears", "pineapple", "plums", "pomegranates", "raisins", "raspberries", "starfruit", "strawberries", "tomatoes", "watermelon"};
+			populateButtons(v, food_list);
+		} else if (foodCategoryName.equals("VEGGIES")) {
+			String[] food_list = {"artichokes", "asparagus", "bamboo", "beets", "bak choy", "broccoli", "brussels sprouts", "butternut squash", "cabbage", "carrots", "cauliflower", "celeriac", "celery", "chinese brocolli", "chinese cabbage", "corn", "cucumber", "daikon", "eggplant", "fennel", "french beans", "green peppers", "yambean (jicama)", "kale", "leeks", "lima beans", "mushrooms", "okra", "onions", "parsnips", "peas", "potatoes", "pumpkin", "radishes", "rapini", "spinach", "seaweed", "zucchini", "winter squash", "sweet potatoes", "swiss chard", "taro", "turnips"};
+			populateButtons(v, food_list);
+		} else if (foodCategoryName.equals("NUTS")) {
+			String[] food_list = {"almonds", "amaranth", "barley", "buckwheat", "cashews", "chestnuts", "coconut", "hazelnuts", "macadamias", "millet", "oats", "peanuts", "pecans", "pine nuts", "pistachios", "pumpkin seeds", "quinoa", "brown rice", "wild rice", "rye", "sesame seeds", "spelt", "sunflower seeds", "walnuts", "white rice"};
+			populateButtons(v, food_list);
 		}
 		
 		TableLayout table = (TableLayout)v.findViewById(R.id.food_category_table);
@@ -65,14 +76,29 @@ public class FoodCategoryFragment extends Fragment implements OnClickListener{
 		return v;
 	}
 	
-	private void populateFruitsButtons(View v) {
-		String[] fruits = {"alfalfa", "apple", "avocado", "banana", "blackberries", "blueberries", "boysenberries", "cantaloupe", "cherries", "cranberries", "dates", "grapefruit", "grapes", "kiwi", "lemon", "limes", "lychees", "mangos", "nectarines", "olives", "oranges", "papayas", "passionfruit", "peaches", "pears", "pineapple", "plums", "pomegranates", "raisins", "raspberries", "starfruit", "strawberries", "tomatoes", "watermelon"};
-		for (int i = 0; i < fruits.length; i++) {
-			foods.add(fruits[i]);
+	private void populateButtons(View v, String[] food_list) {
+		for (int i = 0; i < food_list.length; i++) {
+			foods.add(food_list[i]);
 			Button newButton = new Button(getActivity());
-			newButton.setText(fruits[i]);
-			newButton.setTextSize(10);
+			SpannableString s = new SpannableString(SpecificNutrientFragment.capitalizeFirstLetter(food_list[i]));
+		    s.setSpan(new TypeSpan(getActivity(), "Bariol_Regular.otf"), 0, s.length(),
+		            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+			newButton.setText(s);
+			newButton.setTextSize(15);
+			newButton.setTextColor(getResources().getColor(R.color.green));
 			newButton.setId(i);
+			newButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.category_button));
+			LayoutParams params = new LayoutParams(
+			        LayoutParams.WRAP_CONTENT,      
+			        LayoutParams.WRAP_CONTENT
+			);
+			params.setMargins(15, 25, 25, 15);
+			ColorFilter filter = new LightingColorFilter(getResources().getColor(R.color.green), getResources().getColor(R.color.green));
+			Drawable icon = getResources().getDrawable(R.drawable.apple54);
+			icon.setColorFilter(filter);
+			newButton.setCompoundDrawablesWithIntrinsicBounds(null, icon, null, null );
+			newButton.setPadding(10, 10, 10, 10);
+			newButton.setLayoutParams(params);
 			newButton.setOnClickListener(this);
 			all_buttons.add(newButton);
 		}

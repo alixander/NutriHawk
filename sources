@@ -1,4 +1,3 @@
-alfalfa.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2302/2
 apple.http://nutritiondata.self.com/facts/fruits-and-fruit-juices/1810/2
 avocado.http://nutritiondata.self.com/facts/fruits-and-fruit-juices/1843/2
 banana.http://nutritiondata.self.com/facts/fruits-and-fruit-juices/1846/2
@@ -32,3 +31,73 @@ starfruit.http://nutritiondata.self.com/facts/fruits-and-fruit-juices/1858/2
 strawberries.http://nutritiondata.self.com/facts/fruits-and-fruit-juices/2064/2
 tomatoes.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2682/2
 watermelon.http://nutritiondata.self.com/facts/fruits-and-fruit-juices/2072/2
+alfalfa.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2302/2
+amaranth.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2303/2
+artichokes.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2307/2
+asparagus.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2311/2
+bamboo.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2321/2
+beets.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2348/2
+bak choy.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2377/2
+broccoli.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2356/2
+brussels sprouts.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2362/2
+butternut squash.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2647/2
+cabbage.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2371/2
+carrots.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2383/2
+cauliflower.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2390/2
+celeriac.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2394/2
+celery.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2396/2
+chinese brocolli.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/3034/2
+chinese cabbage.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2379/2
+corn.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2415/2
+cucumber.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2439/2
+daikon.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2607/2
+eggplant.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2443/2
+fennel.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/3023/2
+french beans.http://nutritiondata.self.com/facts/legumes-and-legume-products/4291/2
+green peppers.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2536/2
+yambean (jicama).http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2727/2
+kale.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2461/2
+leeks.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2470/2
+lima beans.http://nutritiondata.self.com/facts/legumes-and-legume-products/4339/2
+mushrooms.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2482/2
+okra.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2497/2
+onions.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2501/2
+parsnips.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2514/2
+peas.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2520/2
+potatoes.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2553/2
+pumpkin.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2600/2
+radishes.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2606/2
+rapini.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/7359/2
+spinach.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2626/2
+seaweed.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2764/2
+zucchini.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2748/2
+winter squash.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2750/2
+sweet potatoes.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2667/2
+swiss chard.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2399/2
+taro.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2673/2
+turnips.http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2699/2
+almonds.http://nutritiondata.self.com/facts/nut-and-seed-products/3087/2
+amaranth.http://nutritiondata.self.com/facts/cereal-grains-and-pasta/10640/2
+barley.http://nutritiondata.self.com/facts/cereal-grains-and-pasta/5680/2
+buckwheat.http://nutritiondata.self.com/facts/cereal-grains-and-pasta/5681/2
+cashews.http://nutritiondata.self.com/facts/nut-and-seed-products/3095/2
+chestnuts.http://nutritiondata.self.com/facts/nut-and-seed-products/3100/2
+coconut.http://nutritiondata.self.com/facts/nut-and-seed-products/3106/2
+hazelnuts.http://nutritiondata.self.com/facts/nut-and-seed-products/3116/2
+macadamias.http://nutritiondata.self.com/facts/nut-and-seed-products/3123/2
+millet.http://nutritiondata.self.com/facts/cereal-grains-and-pasta/5702/2
+oats.http://nutritiondata.self.com/facts/cereal-grains-and-pasta/5708/2
+peanuts.http://nutritiondata.self.com/facts/legumes-and-legume-products/4355/2
+pecans.http://nutritiondata.self.com/facts/nut-and-seed-products/3129/2
+pine nuts.http://nutritiondata.self.com/facts/nut-and-seed-products/3133/2
+pistachios.http://nutritiondata.self.com/facts/nut-and-seed-products/3135/2
+pumpkin seeds.http://nutritiondata.self.com/facts/nut-and-seed-products/3141/2
+quinoa.http://nutritiondata.self.com/facts/cereal-grains-and-pasta/10352/2
+brown rice.http://nutritiondata.self.com/facts/cereal-grains-and-pasta/5707/2
+wild rice.http://nutritiondata.self.com/facts/cereal-grains-and-pasta/5752/2
+rye.http://nutritiondata.self.com/facts/cereal-grains-and-pasta/5727/2
+sesame seeds.http://nutritiondata.self.com/facts/nut-and-seed-products/3070/2
+spelt.http://nutritiondata.self.com/facts/cereal-grains-and-pasta/10356/2
+sunflower seeds.http://nutritiondata.self.com/facts/nut-and-seed-products/3076/2
+walnuts.http://nutritiondata.self.com/facts/nut-and-seed-products/3138/2
+white rice.http://nutritiondata.self.com/facts/cereal-grains-and-pasta/5722/2
