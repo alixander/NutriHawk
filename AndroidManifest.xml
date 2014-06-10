@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="14"
         android:targetSdkVersion="18" />
 
     <application
@@ -33,10 +33,6 @@
         <activity
             android:name="com.example.nutrihawk.AddNutrientActivity"
             android:label="@string/add_nutrient_menu_text" >
-        </activity>
-        <activity
-            android:name="com.example.nutrihawk.NutrientPagerActivity"
-            android:label="Pager" >
         </activity>
         <activity
             android:name="com.example.nutrihawk.FoodSourcesActivity"

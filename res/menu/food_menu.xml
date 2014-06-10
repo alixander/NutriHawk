@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item 
+        android:id="@+id/log_items" 
+   		android:title="Log Items"
+   		android:textColor="@color/green" 
+   		android:color="@color/green"
+   		android:background="@color/lite_green"
+   		android:showAsAction="always|withText" >
+   	</item>
+
+</menu>

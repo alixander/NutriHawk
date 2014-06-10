@@ -3,10 +3,25 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <Button
+            android:id="@+id/log_items_button"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Log Items"
+            android:layout_centerInParent="true"
+            android:padding="10dp" />
+     
+        
+    </RelativeLayout>
     <ListView
         android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
+        
 
     </ListView>
 </LinearLayout>

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import org.joda.time.LocalDate;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.text.Spannable;
@@ -16,6 +17,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,11 +29,14 @@ public class FoodCategoryFragment extends ListFragment {
 	private HashMap<String, MineralSet> mineralSources;
 	private ArrayList<Button> all_buttons;
 	private ArrayList<String> foods;
+	private ArrayList<String> logged_foods;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+//		setHasOptionsMenu(true);
 		all_buttons = new ArrayList<Button>();
+		logged_foods = new ArrayList<String>();
 		foods = new ArrayList<String>();
 		foodCategoryName = getActivity().getIntent().getStringExtra(EXTRA_FOOD_CATEGORY_ID).toUpperCase();
 		vitaminSources = Information.get(getActivity()).getVitaminSources();
@@ -40,6 +45,12 @@ public class FoodCategoryFragment extends ListFragment {
 		StatusItemAdapter adapter = new StatusItemAdapter(foods);
 		setListAdapter(adapter);
 	}
+	
+//	@Override
+//	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//		super.onCreateOptionsMenu(menu, inflater);
+//		inflater.inflate(R.menu.food_menu, menu);
+//	}
 	
 	private void populate() {
 		if (foodCategoryName.equals("FRUITS")) {
@@ -54,6 +65,15 @@ public class FoodCategoryFragment extends ListFragment {
 		} else if (foodCategoryName.equals("GRAINS")) {
 			String[] food_list = {"amaranth", "barley", "buckwheat", "millet", "oats", "quinoa", "brown rice", "wild rice", "rye", "spelt", "white rice"};
 			populateButtons(food_list);
+		} else if (foodCategoryName.equals("MEATS")) {
+			String[] food_list = {"beef kidney", "beef liver", "beef lung", "beef pancreas", "beef spleen", "beef tongue", "bologna", "beef tenderloin", "cubed steak", "ground beef", "beef ribs", "beef briskets", "beef sirloin", "roast beef", "chicken breast", "chicken drumstick", "chicken leg", "light meat chicken", "chicken thigh", "chicken wing", "chicken nuggets", "dark meat chicken", "carp fish", "cod fish", "catfish", "bass fish", "anchovy", "caviar", "eel", "halibut", "haddock", "herring", "mackerel", "pike", "pollock", "salmon", "sardine", "sea bass", "seatrout", "swordfish", "trout", "tuna", "perch", "lamb", "bacon", "sausage", "ham", "pork patties", "pork (composite)", "ground pork", "turkey (dark)", "turkey breast", "turkey (light)", "turkey bacon", "veal", "duck breast", "duck leg", "ground turkey"};
+			populateButtons(food_list);
+		} else if (foodCategoryName.equals("DAIRY")) {
+			String[] food_list = {"milk", "butter", "cheddar cheese", "cottage cheese", "cream cheese", "gouda cheese", "goat cheese", "feta cheese", "mozzarella cheese", "parmesan cheese", "provolone cheese", "swiss cheese", "yogurt", "frozen yogurt", "sour cream"};
+			populateButtons(food_list);
+		} else if (foodCategoryName.equals("OTHER")) {
+			String[] food_list = {"soymilk", "soybeans", "eggs"};
+			populateButtons(food_list);
 		}
 	}
 	
@@ -66,42 +86,54 @@ public class FoodCategoryFragment extends ListFragment {
 	    s.setSpan(new TypeSpan(getActivity(), "mensch-bold.ttf"), 0, s.length(),
 	            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 		ab.setTitle(s);
-//		
-//		
-//		TableLayout table = (TableLayout)v.findViewById(R.id.food_category_table);
-//		TableRow row = new TableRow(getActivity());
-//		for (int i = 0; i < all_buttons.size(); i++) {
-//			if (i % 3 == 0) {
-//				row = new TableRow(getActivity());
-//				table.addView(row);
-//			}
-//			row.addView(all_buttons.get(i));
-//		}
+		
+		Button log_button = (Button) v.findViewById(R.id.log_items_button);
+		final Activity activity = getActivity();
+		log_button.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				logFoods();
+				Toast.makeText(getActivity(), "Nutrients logged!", Toast.LENGTH_SHORT).show();
+				activity.finish();
+		    }
+		});
 		
 		return v;
 	}
-	public void onListItemClick(ListView l, View v, int position, long id) {
-		String newFood = ((StatusItemAdapter)getListAdapter()).getItem(position).toUpperCase();
-		 
-		VitaminSet foodVitamins = vitaminSources.get(newFood);
-		MineralSet foodMinerals = mineralSources.get(newFood);
+	
+	private void logFoods() {
 		LocalDate now = new LocalDate();
-		 
+		
 		ArrayList<Nutrient> currentNutrients = Information.get(getActivity()).getNutrients();
-		for (Nutrient n : currentNutrients) {
-			if (foodVitamins.getVitaminAmount().containsKey(n.toString()) &&
-				foodVitamins.getVitaminAmount().get(n.toString()) != 0) {
-					n.addAmount(foodVitamins.getVitaminAmount().get(n.toString()), now);
-					n.addSource(newFood);
-			} else if (foodMinerals.getMineralAmount().containsKey(n.toString().toUpperCase()) &&
-					foodMinerals.getMineralAmount().get(n.toString().toUpperCase()) != 0) {
-						n.addAmount(foodMinerals.getMineralAmount().get(n.toString().toUpperCase()), now);
+		for (String newFood : logged_foods) {
+			VitaminSet foodVitamins = vitaminSources.get(newFood);
+			MineralSet foodMinerals = mineralSources.get(newFood);
+			for (Nutrient n : currentNutrients) {
+				if (foodVitamins.getVitaminAmount().containsKey(n.toString().toUpperCase()) &&
+					foodVitamins.getVitaminAmount().get(n.toString().toUpperCase()) != 0) {
+						n.addAmount(foodVitamins.getVitaminAmount().get(n.toString().toUpperCase()), now);
 						n.addSource(newFood);
-			} else {
+				} else if (foodMinerals.getMineralAmount().containsKey(n.toString().toUpperCase()) &&
+						foodMinerals.getMineralAmount().get(n.toString().toUpperCase()) != 0) {
+							n.addAmount(foodMinerals.getMineralAmount().get(n.toString().toUpperCase()), now);
+							n.addSource(newFood);
+				} else {
+				}
 			}
 		}
 		Information.get(getActivity()).setNutrients(currentNutrients);
-		Toast.makeText(getActivity(), "New Nutrients added!", Toast.LENGTH_SHORT).show();
+	}
+	
+	public void onListItemClick(ListView l, View v, int position, long id) {
+		String newFood = ((StatusItemAdapter)getListAdapter()).getItem(position).toUpperCase();
+		
+		CheckBox food_checkbox = (CheckBox)v.findViewById(R.id.food_checked);
+		if (!food_checkbox.isChecked()) {
+			food_checkbox.setChecked(true);
+			logged_foods.add(newFood);
+		} else {
+			food_checkbox.setChecked(false);
+			logged_foods.remove(newFood);
+		}
 	}
 	
 	@Override
@@ -126,6 +158,9 @@ public class FoodCategoryFragment extends ListFragment {
 			
 			TextView food_name_section = (TextView)convertView.findViewById(R.id.food_name);
 			food_name_section.setText(food);
+			
+			CheckBox food_checked = (CheckBox)convertView.findViewById(R.id.food_checked);
+			food_checked.setChecked(logged_foods.contains(food.toUpperCase()));
 			
 			return convertView;
 		}
@@ -158,31 +193,4 @@ public class FoodCategoryFragment extends ListFragment {
 //			all_buttons.add(newButton);
 		}
 	}
-	
-//@Override
-//public void onClick(View v) {
-//	Button b = (Button)v;
-//	String newFood = b.getText().toString().toUpperCase();
-//	
-//	 
-//	VitaminSet foodVitamins = vitaminSources.get(newFood);
-//	MineralSet foodMinerals = mineralSources.get(newFood);
-//	LocalDate now = new LocalDate();
-//	 
-//	ArrayList<Nutrient> currentNutrients = Information.get(getActivity()).getNutrients();
-//	for (Nutrient n : currentNutrients) {
-//		if (foodVitamins.getVitaminAmount().containsKey(n.toString()) &&
-//			foodVitamins.getVitaminAmount().get(n.toString()) != 0) {
-//				n.addAmount(foodVitamins.getVitaminAmount().get(n.toString()), now);
-//				n.addSource(newFood);
-//		} else if (foodMinerals.getMineralAmount().containsKey(n.toString().toUpperCase()) &&
-//				foodMinerals.getMineralAmount().get(n.toString().toUpperCase()) != 0) {
-//					n.addAmount(foodMinerals.getMineralAmount().get(n.toString().toUpperCase()), now);
-//					n.addSource(newFood);
-//		} else {
-//		}
-//	}
-//	Information.get(getActivity()).setNutrients(currentNutrients);
-//	Toast.makeText(getActivity(), "New Nutrients added!", Toast.LENGTH_SHORT).show();
-//	}
 }

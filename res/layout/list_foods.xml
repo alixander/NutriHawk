@@ -17,5 +17,14 @@
         android:text="Nutrient Name"
         android:fontFamily="fonts/Bariol_Regular.otf"
         android:textSize="20dp" />
+    
+    <CheckBox
+        android:id="@+id/food_checked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:layout_alignParentRight="true"
+        android:checked="false"
+        android:gravity="right" />
 
 </RelativeLayout>
