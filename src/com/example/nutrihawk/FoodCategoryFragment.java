@@ -1,6 +1,7 @@
 package com.example.nutrihawk;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 import org.joda.time.LocalDate;
@@ -91,8 +92,12 @@ public class FoodCategoryFragment extends ListFragment {
 		final Activity activity = getActivity();
 		log_button.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				logFoods();
-				Toast.makeText(getActivity(), "Nutrients logged!", Toast.LENGTH_SHORT).show();
+				if (logged_foods.size() != 0) {
+					logFoods();
+					Toast.makeText(getActivity(), "Nutrients logged!", Toast.LENGTH_SHORT).show();
+				} else {
+					Toast.makeText(getActivity(), "Not Saved", Toast.LENGTH_SHORT).show();
+				}
 				activity.finish();
 		    }
 		});
@@ -154,7 +159,7 @@ public class FoodCategoryFragment extends ListFragment {
 				convertView = getActivity().getLayoutInflater().inflate(R.layout.list_foods, null);
 			}
 			
-			String food = SpecificNutrientFragment.capitalizeFirstLetter(getItem(position));
+			String food = SpecificNutrientFragment.capitalizeAllFirstLetters(getItem(position));
 			
 			TextView food_name_section = (TextView)convertView.findViewById(R.id.food_name);
 			food_name_section.setText(food);
@@ -169,28 +174,7 @@ public class FoodCategoryFragment extends ListFragment {
 	private void populateButtons(String[] food_list) {
 		for (int i = 0; i < food_list.length; i++) {
 			foods.add(food_list[i]);
-//			Button newButton = new Button(getActivity());
-//			SpannableString s = new SpannableString(SpecificNutrientFragment.capitalizeFirstLetter(food_list[i]));
-//		    s.setSpan(new TypeSpan(getActivity(), "Bariol_Regular.otf"), 0, s.length(),
-//		            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-//			newButton.setText(s);
-//			newButton.setTextSize(15);
-//			newButton.setTextColor(getResources().getColor(R.color.green));
-//			newButton.setId(i);
-//			newButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.category_button));
-//			LayoutParams params = new LayoutParams(
-//			        LayoutParams.WRAP_CONTENT,      
-//			        LayoutParams.WRAP_CONTENT
-//			);
-//			params.setMargins(15, 25, 25, 15);
-//			ColorFilter filter = new LightingColorFilter(getResources().getColor(R.color.green), getResources().getColor(R.color.green));
-//			Drawable icon = getResources().getDrawable(R.drawable.apple54);
-//			icon.setColorFilter(filter);
-//			newButton.setCompoundDrawablesWithIntrinsicBounds(null, icon, null, null );
-//			newButton.setPadding(10, 10, 10, 10);
-//			newButton.setLayoutParams(params);
-//			newButton.setOnClickListener(this);
-//			all_buttons.add(newButton);
 		}
+		Collections.sort(foods);
 	}
 }

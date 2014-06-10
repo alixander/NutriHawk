@@ -28,6 +28,8 @@ public class AddNutrientFragment extends Fragment {
 	Button mGrainsButton;
 	Button mMeatsButton;
 	Button mNutsButton;
+	Button mOtherButton;
+	Button mManualButton;
 	EditText mNewFood;
 	
 	@Override
@@ -79,8 +81,22 @@ public class AddNutrientFragment extends Fragment {
 						}
 					}
 					Information.get(getActivity()).setNutrients(currentNutrients);
-					Toast.makeText(getActivity(), "New Nutrients added!", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getActivity(), "New Nutrients logged!", Toast.LENGTH_SHORT).show();
 				}
+			}
+		});
+		mManualButton = (Button)v.findViewById(R.id.manual_category_button);
+		mManualButton.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Intent i = new Intent(getActivity(), ManualInputActivity.class);
+				startActivity(i);
+			}
+		});
+		
+		mOtherButton = (Button)v.findViewById(R.id.other_category_button);
+		mOtherButton.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				startActivityWithIntent((String)mOtherButton.getText());
 			}
 		});
 		

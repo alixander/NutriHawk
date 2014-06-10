@@ -135,19 +135,6 @@
 	        android:layout_height="fill_parent"
 	        android:layout_weight="1"
 	        android:weightSum="3" >
-        
-	        <Button
-	            android:id="@+id/juices_category_button"
-	            android:text="Juice"
-	            android:layout_width="0dp"
-	            android:layout_height="70dp"
-	            android:layout_weight="1"
-	            android:textColor="@color/green"
-	            android:fontFamily="fonts/mensch-bold.ttf"
-	            android:background="@drawable/category_button"
-	            android:layout_margin="10dp"
-	            android:textSize="22sp"
-	            />
 	        
 	        <Button
 	            android:id="@+id/other_category_button"
@@ -173,6 +160,19 @@
 	            android:fontFamily="fonts/mensch-bold.ttf"
 	            android:background="@drawable/category_button"
 	            android:layout_margin="10dp"
+	            />
+	        
+	        <Button
+	            android:id="@+id/juices_category_button"
+	            android:text="Juice"
+	            android:layout_width="0dp"
+	            android:layout_height="70dp"
+	            android:layout_weight="1"
+	            android:textColor="@color/green"
+	            android:fontFamily="fonts/mensch-bold.ttf"
+	            android:background="@color/green"
+	            android:layout_margin="10dp"
+	            android:textSize="22sp"
 	            />
 	        
 	    </TableRow>

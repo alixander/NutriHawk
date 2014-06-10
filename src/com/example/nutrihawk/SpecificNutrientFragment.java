@@ -139,7 +139,7 @@ public class SpecificNutrientFragment extends Fragment {
 		chartView.setHorizontalAxis(horizontalAxis);
 
 		LinearAxis verticalAxis = new LinearAxis(getActivity().getBaseContext());
-		verticalAxis.setMajorStep(20);
+//		verticalAxis.setMajorStep(20);
 		chartView.setVerticalAxis(verticalAxis);
 		lineSeries.setStrokeColor(Color.parseColor("#355d3d"));
 		graph_holder.addView(chartView);
@@ -201,6 +201,16 @@ public class SpecificNutrientFragment extends Fragment {
 		topFive.setText(Html.fromHtml(topFive_string));
 		
 		return v;
+	}
+	
+	//Haha, unnecessarily recursive?
+	public static String capitalizeAllFirstLetters(String s) {
+		String output = s.substring(0, 1).toUpperCase() + s.substring(1).toLowerCase();
+		if (output.contains(" ")) {
+			int space_index = output.indexOf(" ");
+			output = output.substring(0, space_index) + " " + capitalizeAllFirstLetters(output.substring(space_index+1, output.length()));
+		}
+		return output;
 	}
 	
 	public static String capitalizeFirstLetter(String s) {

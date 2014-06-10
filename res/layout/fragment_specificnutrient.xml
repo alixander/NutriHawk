@@ -55,6 +55,17 @@
 		    android:textColor="@color/green"
 		    android:layout_marginTop="20dp"
 		/>
+	    <TextView
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:textSize="15sp"
+	        android:text="Percentage of Daily Value in Past Week"
+	        android:fontFamily="fonts/Bariol_Regular.otf"
+	        android:textColor="@color/green"
+	        android:layout_marginTop="10dp"
+	        android:layout_marginBottom="20dp"
+	    />
 	    <LinearLayout
 	        android:id="@+id/graph_holder"
 	        android:orientation="vertical"

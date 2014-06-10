@@ -11,7 +11,7 @@
         android:state_pressed="true" >
         <shape>
 		    <solid
-		        android:color="@color/lite_grey" />     
+		        android:color="@color/lite_green" />     
 		</shape> 
     </item>
 </selector>
