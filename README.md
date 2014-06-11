@@ -17,9 +17,13 @@ Since it's designed to be used as an estimate and not a strict counter like calo
 
 Most apps are designed around weight loss or muscle gain and so keep track of your calorie intake or the amount of proteins you've consumed. This one focuses on health, because deficiency in a vitamin or mineral is a common occurance, especially among people with less varied diets. 
 
+### Misc
+
 Nutritional content information scraped off [http://nutritiondata.self.com/](http://nutritiondata.self.com/). 
 
-SDK's 14+. Uses Telerik Android charting features.
+SDK's 14+. 
+
+Uses Telerik Android charting features.
 
 
 ### Licence
