@@ -1,4 +1,4 @@
-package com.example.nutrihawk;
+package com.alixander.nutrihawk;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -482,10 +482,8 @@ public class Information {
 	public boolean saveNutrients() {
 		try {
 			mSerializer.saveNutrients(mNutrients);
-			Log.d(TAG, "nutrients saved");
 			return true;
 		} catch (Exception e) {
-			Log.e(TAG, "Error saving ", e);
 			return false;
 		}
 	}

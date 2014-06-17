@@ -1,4 +1,4 @@
-package com.example.nutrihawk;
+package com.alixander.nutrihawk;
 
 import android.content.Context;
 import android.graphics.Typeface;

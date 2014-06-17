@@ -1,4 +1,4 @@
-package com.example.nutrihawk;
+package com.alixander.nutrihawk;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -59,7 +59,6 @@ public class Nutrient {
 		
 		JSONObject tempDates = json.getJSONObject(JSON_DATES);
 		for (int i = 0; i < tempDates.length(); i++) {
-			Log.d("YO", tempDates.getString(""+i));
 			datesIntook.add(new LocalDate(tempDates.getString(""+i)));
 		}
 		

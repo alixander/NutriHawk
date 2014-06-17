@@ -1,53 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.nutrihawk"
+    package="com.alixander.nutrihawk"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.0" 
+    android:largeScreens="false" >
 
     <uses-sdk
-        android:minSdkVersion="14"
-        android:targetSdkVersion="18" />
-
+        android:minSdkVersion="11"
+        android:targetSdkVersion="19" />
+    
+    <compatible-screens>
+        <!-- all small size screens -->
+        <screen android:screenSize="small" android:screenDensity="ldpi" />
+        <screen android:screenSize="small" android:screenDensity="mdpi" />
+        <screen android:screenSize="small" android:screenDensity="hdpi" />
+        <screen android:screenSize="small" android:screenDensity="xhdpi" />
+        <!-- all normal size screens -->
+        <screen android:screenSize="normal" android:screenDensity="ldpi" />
+        <screen android:screenSize="normal" android:screenDensity="mdpi" />
+        <screen android:screenSize="normal" android:screenDensity="hdpi" />
+        <screen android:screenSize="normal" android:screenDensity="xhdpi" />
+    </compatible-screens>
+    
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/CustomActionBarTheme" >
         <activity
-            android:name="com.example.nutrihawk.HomeActivity"
-            android:label="@string/app_name" >
+            android:name="com.alixander.nutrihawk.HomeActivity"
+            android:label="@string/app_name" 
+   		    android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.ServicesViewActivity" >
+        <activity android:name="com.alixander.ServicesViewActivity" >
 	            <meta-data
 	            android:name="android.support.PARENT_ACTIVITY"
-	            android:value="com.example.ParentActivity" />
+	            android:value="com.alixander.ParentActivity" />
 	    </activity>
         <activity
-            android:name="com.example.nutrihawk.StatusActivity"
+    android:screenOrientation="portrait"
+            android:name="com.alixander.nutrihawk.StatusActivity"
             android:label="@string/check_status_menu_text" >
         </activity>
         <activity
-            android:name="com.example.nutrihawk.SpecificNutrientActivity"
+    android:screenOrientation="portrait"
+            android:name="com.alixander.nutrihawk.SpecificNutrientActivity"
             android:label="@string/specific_nutrient_menu_text" >
         </activity>
         <activity
-            android:name="com.example.nutrihawk.ManualInputActivity" >
+    android:screenOrientation="portrait"
+            android:name="com.alixander.nutrihawk.ManualInputActivity" >
 		</activity>
         <activity
-            android:name="com.example.nutrihawk.AddNutrientActivity"
+    android:screenOrientation="portrait"
+            android:name="com.alixander.nutrihawk.AddNutrientActivity"
             android:label="@string/add_nutrient_menu_text" >
         </activity>
         <activity
-            android:name="com.example.nutrihawk.FoodSourcesActivity"
+    android:screenOrientation="portrait"
+            android:name="com.alixander.nutrihawk.FoodSourcesActivity"
             android:label="@string/food_sources_menu_text" >
         </activity>
         <activity
-            android:name="com.example.nutrihawk.FoodCategoryActivity" >
+    android:screenOrientation="portrait"
+            android:name="com.alixander.nutrihawk.FoodCategoryActivity" >
         </activity>
     </application>
 

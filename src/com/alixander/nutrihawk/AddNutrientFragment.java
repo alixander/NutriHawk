@@ -1,4 +1,4 @@
-package com.example.nutrihawk;
+package com.alixander.nutrihawk;
 
 import java.util.ArrayList;
 import java.util.HashMap;
