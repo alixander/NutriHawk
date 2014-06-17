@@ -74,7 +74,7 @@
         android:layout_gravity="bottom|right"
         android:scaleType="fitEnd"
         android:background="@color/green"
-        android:src="@drawable/hawk_bg" />
+        android:src="@drawable/brown_hawk" />
    
 
 </LinearLayout>

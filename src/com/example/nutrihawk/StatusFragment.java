@@ -159,6 +159,8 @@ public class StatusFragment extends ListFragment {
 				LocalDate lastIntake = n.getLastTaken();
 				if (lastIntake.getDayOfYear() == (LocalDate.now().getDayOfYear())) {
 					output = "Today";
+				} else if (Math.abs(lastIntake.getDayOfYear() - LocalDate.now().getDayOfYear()) == 1) {
+					output = "Yesterday";
 				} else {
 					output = Days.daysBetween(lastIntake, new LocalDate()).getDays() + " days ago";
 				}

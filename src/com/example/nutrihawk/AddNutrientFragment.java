@@ -9,9 +9,11 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NavUtils;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -38,6 +40,17 @@ public class AddNutrientFragment extends Fragment {
 	}
 	
 	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+	        case android.R.id.home:
+	            NavUtils.navigateUpFromSameTask(getActivity());
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+        }
+    }
+	
+	@Override
 	public void onPause() {
 		super.onPause();
 		Information.get(getActivity()).saveNutrients();
@@ -62,21 +75,29 @@ public class AddNutrientFragment extends Fragment {
 				ArrayList<Nutrient> currentNutrients = Information.get(getActivity()).getNutrients();
 				HashMap<String, VitaminSet> vitaminSources = Information.get(getActivity()).getVitaminSources();
 				HashMap<String, MineralSet> mineralSources = Information.get(getActivity()).getMineralSources();
-				if (!vitaminSources.containsKey(newFood)) {
+				boolean doesContain = false;
+				String match = "";
+				for (String variant : variantsOfFood(newFood)) {
+					if (vitaminSources.containsKey(variant)) {
+						doesContain = true;
+						match = variant;
+					}
+				}
+				if (!doesContain) {
 					Toast.makeText(getActivity(), "Food not found!", Toast.LENGTH_SHORT).show();
 				} else {
-					VitaminSet foodVitamins = vitaminSources.get(newFood);
-					MineralSet foodMinerals = mineralSources.get(newFood);
+					VitaminSet foodVitamins = vitaminSources.get(match);
+					MineralSet foodMinerals = mineralSources.get(match);
 					LocalDate now = new LocalDate();
 					for (Nutrient n : currentNutrients) {
 						if (foodVitamins.getVitaminAmount().containsKey(n.toString().toUpperCase()) &&
 								foodVitamins.getVitaminAmount().get(n.toString().toUpperCase()) != 0) {
 							n.addAmount(foodVitamins.getVitaminAmount().get(n.toString().toUpperCase()), now);
-							n.addSource(newFood);
+							n.addSource(match);
 						} else if (foodMinerals.getMineralAmount().containsKey(n.toString().toUpperCase()) &&
 								foodMinerals.getMineralAmount().get(n.toString().toUpperCase()) != 0) {
 							n.addAmount(foodMinerals.getMineralAmount().get(n.toString().toUpperCase()), now);
-							n.addSource(newFood);
+							n.addSource(match);
 						} else {
 						}
 					}
@@ -143,6 +164,19 @@ public class AddNutrientFragment extends Fragment {
 		});
 		
 		return v;
+	}
+	
+	private ArrayList<String> variantsOfFood(String food) {
+		ArrayList<String> variants = new ArrayList<String>();
+		variants.add(food);
+		variants.add(food + "S"); //apple -> apples
+		variants.add(food + "ES"); //asparagus -> asparaguses
+		variants.add(food.substring(0, food.length()-2)); //opposite of above
+		variants.add(food + " CHEESE"); // cheddar -> cheddar cheese
+		variants.add(food.substring(0, food.length()-1)); //ryes -> rye
+		variants.add(food.substring(0, food.length()-1) + "IES"); //blueberry -> blueberries
+		variants.add(food.substring(0, food.length()-3) + "Y"); //blueberries -> blueberry
+		return variants;
 	}
 	
 	private void startActivityWithIntent(String extra) {

@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -159,13 +160,24 @@ public class FoodCategoryFragment extends ListFragment {
 				convertView = getActivity().getLayoutInflater().inflate(R.layout.list_foods, null);
 			}
 			
-			String food = SpecificNutrientFragment.capitalizeAllFirstLetters(getItem(position));
+			final String food = SpecificNutrientFragment.capitalizeAllFirstLetters(getItem(position));
 			
 			TextView food_name_section = (TextView)convertView.findViewById(R.id.food_name);
 			food_name_section.setText(food);
 			
 			CheckBox food_checked = (CheckBox)convertView.findViewById(R.id.food_checked);
 			food_checked.setChecked(logged_foods.contains(food.toUpperCase()));
+			food_checked.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+		       @Override
+		       public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+		    	   if (isChecked) {
+		    		   logged_foods.add(food.toUpperCase());
+		    	   } else {
+		    		   logged_foods.remove(food.toUpperCase());
+		    	   }
+		       }
+		   });
 			
 			return convertView;
 		}

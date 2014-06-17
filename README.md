@@ -25,6 +25,15 @@ SDK's 14+.
 
 Uses Telerik Android charting features.
 
+Sources for other info:
+http://www.whfoods.com/genpage.php?tname=nutrient&dbid=50
+http://www.webmd.com/food-recipes/vitamin-mineral-sources
+http://www.sharecare.com/health/
+http://www.newsmax.com/FastFeatures/Vitamin-B5-pantothenic-acid/2011/01/18/id/383120/
+http://revivelifelab.com/kids/vitality-balance-kids-%E2%84%A2/faqs-the-symptoms-of-nutrient-deficiencies/
+http://www.thyroid.org/iodine-deficiency/
+http://en.wikipedia.org/wiki/Manganese_deficiency_(medicine)
+
 
 ### Licence
 

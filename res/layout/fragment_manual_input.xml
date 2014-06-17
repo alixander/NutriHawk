@@ -1,7 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-    
-
-</RelativeLayout>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent" >
+   
+	<LinearLayout
+	    android:id="@+id/manual_input_content"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content" 
+	    android:orientation="vertical"
+	    android:gravity="center"
+	    android:background="@color/lite_grey" >
+	    
+        <Button
+            android:id="@+id/log_items_button"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Log Items"
+            android:textColor="@color/white"
+            android:fontFamily="fonts/mensch-bold.ttf"
+            android:gravity="center"
+            android:background="@drawable/log_button"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="10dp" />
+	    
+	    <TextView
+	        android:id="@+id/manual_input_header"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:fontFamily="fonts/mensch-bold.ttf"
+	        android:textColor="@color/green"
+	        android:text="DAILY VALUE PERCENTAGE"
+	        android:paddingTop="20dp"
+	        android:paddingBottom="20dp"
+	        android:gravity="center"
+	        android:textSize="25sp" />
+	    
+	    
+	    
+	
+	</LinearLayout>
+</ScrollView>

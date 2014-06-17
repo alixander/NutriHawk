@@ -17,9 +17,11 @@ public class Nutrient {
 	private static final String JSON_SOURCES_COUNT = "sources_count";
 	private static final String JSON_DATES = "dates";
 	private static final String JSON_AMOUNTS = "amounts";
+	private static final String JSON_MANUAL_AMOUNT = "manual_amount";
 	
 	private UUID mId;
 	private String mName;
+	private int manualAmount;
 	private ArrayList<String> sources;
 	private ArrayList<Integer> sourcesCount;
 	private ArrayList<LocalDate> datesIntook;
@@ -29,6 +31,7 @@ public class Nutrient {
 	public Nutrient(String name) {
 		mId = UUID.randomUUID();
 		mName = name;
+		manualAmount = 0;
 		sources = new ArrayList<String>();
 		sourcesCount = new ArrayList<Integer>();
 		datesIntook = new ArrayList<LocalDate>();
@@ -42,6 +45,7 @@ public class Nutrient {
 		sourcesCount = new ArrayList<Integer>();
 		datesIntook = new ArrayList<LocalDate>();
 		amountEachDay = new ArrayList<Integer>();
+		manualAmount = json.getInt(JSON_MANUAL_AMOUNT);
 		
 		JSONObject tempSources = json.getJSONObject(JSON_SOURCES);
 		for (int i = 0; i < tempSources.length(); i++) {
@@ -69,6 +73,7 @@ public class Nutrient {
 		JSONObject json = new JSONObject();
 		json.put(JSON_ID, mId.toString());
 		json.put(JSON_NAME, mName);
+		json.put(JSON_MANUAL_AMOUNT, manualAmount);
 
 		JSONObject json_sources = new JSONObject();
 		for (int i = 0; i < sources.size(); i++) {
@@ -100,6 +105,14 @@ public class Nutrient {
 	@Override
 	public String toString() {
 		return mName;
+	}
+	
+	public int getManualAmount() {
+		return manualAmount;
+	}
+	
+	public void setManualAmount(int newAmount) {
+		manualAmount = newAmount;
 	}
 
 
@@ -173,11 +186,12 @@ public class Nutrient {
 	
 	public LocalDate getLastTaken() {
 		ArrayList<Integer> amounts = getAmount();
+		LocalDate lastTaken = new LocalDate();
 		for (int i = 0; i < getDatesIntook().size(); i++) {
 			if (amounts.get(i) > Information.THRESHOLD) {
-				return getDatesIntook().get(i);
+				lastTaken = getDatesIntook().get(i);
 			}
 		}
-		return new LocalDate();
+		return lastTaken;
 	}
 }

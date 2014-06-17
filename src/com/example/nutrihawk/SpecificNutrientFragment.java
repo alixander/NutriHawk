@@ -15,6 +15,7 @@ import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,8 @@ public class SpecificNutrientFragment extends Fragment {
 	            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 		ab.setTitle(s);
 		
+		//------------------------------------Setting texts ------------------------------------
+		
 		TextView mNutrientDescription = (TextView)v.findViewById(R.id.nutrient_description);
 		int[] string_ids = getIDs();
 		int nutrient_description_string_id = string_ids[0];
@@ -99,7 +102,7 @@ public class SpecificNutrientFragment extends Fragment {
 		}
 		deficiency_section.setText(Html.fromHtml(output));
 		
-		//Line Chart
+		//------------------------------------Line Chart------------------------------------
 		
 		final ArrayList<LocalDate> validDates = new ArrayList<LocalDate>(); //dates in past week
 		LocalDate currentDate = new LocalDate();
@@ -144,7 +147,7 @@ public class SpecificNutrientFragment extends Fragment {
 		lineSeries.setStrokeColor(Color.parseColor("#355d3d"));
 		graph_holder.addView(chartView);
 		
-		//Pie Chart
+		//------------------------------------Pie Chart------------------------------------
 		
 		LinearLayout pie_holder = (LinearLayout) v.findViewById(R.id.pie_holder);
 		RadPieChartView pieChartView = new RadPieChartView(getActivity().getBaseContext());
@@ -153,6 +156,10 @@ public class SpecificNutrientFragment extends Fragment {
 		pieSeries.setValueBinding(new DataPointBinding() {
 		    @Override
 		    public Object getValue(Object o) throws IllegalArgumentException {
+		    	if (o.toString().equalsIgnoreCase("MANUAL")) {
+		    		food_amounts.put("MANUAL", (double)mNutrient.getManualAmount());
+		    		return (double)mNutrient.getManualAmount();
+		    	}
 		        double count = (double)mNutrient.getSourcesCount().get(mNutrient.getSources().indexOf(o));
 		        String source_name = mNutrient.getSources().get(mNutrient.getSources().indexOf(o));
 		        VitaminSet vitaminSources = Information.get(getActivity()).getVitaminSources().get(source_name.toUpperCase());
@@ -169,6 +176,8 @@ public class SpecificNutrientFragment extends Fragment {
 
 		pie_holder.addView(pieChartView);
 		
+		//------------------------------------Top five------------------------------------
+		
 		TextView topFive = (TextView)v.findViewById(R.id.top_five_text);
 		String topFive_string = "";
 		ArrayList<Integer> sourcesCount = mNutrient.getSourcesCount();
@@ -183,9 +192,16 @@ public class SpecificNutrientFragment extends Fragment {
 			double currentMostCount = 0.0;
 			String currentMost = "";
 			for (int i = 0; i < sources.size(); i++) {
-				if (sourcesCount.get(i) * food_amounts.get(sources.get(i)) > currentMostCount && !topFive_sources.contains(sources.get(i))) {
-					currentMostCount = sourcesCount.get(i) * food_amounts.get(sources.get(i));
-					currentMost = sources.get(i);
+				if (sources.get(i).equalsIgnoreCase("manual")) {
+					if (mNutrient.getManualAmount() > currentMostCount && !topFive_sources.contains(sources.get(i))) {
+						currentMostCount = mNutrient.getManualAmount();
+						currentMost = sources.get(i);
+					}
+				} else {
+					if (sourcesCount.get(i) * food_amounts.get(sources.get(i)) > currentMostCount && !topFive_sources.contains(sources.get(i))) {
+						currentMostCount = sourcesCount.get(i) * food_amounts.get(sources.get(i));
+						currentMost = sources.get(i);
+					}
 				}
 			}
 			if (currentMostCount == 0) {
@@ -203,7 +219,7 @@ public class SpecificNutrientFragment extends Fragment {
 		return v;
 	}
 	
-	//Haha, unnecessarily recursive?
+	//Unnecessarily recursive?
 	public static String capitalizeAllFirstLetters(String s) {
 		String output = s.substring(0, 1).toUpperCase() + s.substring(1).toLowerCase();
 		if (output.contains(" ")) {
