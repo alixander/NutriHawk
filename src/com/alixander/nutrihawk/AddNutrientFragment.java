@@ -117,49 +117,49 @@ public class AddNutrientFragment extends Fragment {
 		mOtherButton = (Button)v.findViewById(R.id.other_category_button);
 		mOtherButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				startActivityWithIntent((String)mOtherButton.getText());
+				startActivityWithIntent((String)mOtherButton.getText().toString());
 			}
 		});
 		
 		mFruitsButton = (Button)v.findViewById(R.id.fruits_category_button);
 		mFruitsButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				startActivityWithIntent((String)mFruitsButton.getText());
+				startActivityWithIntent((String)mFruitsButton.getText().toString());
 			}
 		});
 		
 		mVeggiesButton = (Button)v.findViewById(R.id.veggies_category_button);
 		mVeggiesButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				startActivityWithIntent((String)mVeggiesButton.getText());
+				startActivityWithIntent((String)mVeggiesButton.getText().toString());
 			}
 		});
 		
 		mDairyButton = (Button)v.findViewById(R.id.dairy_category_button);
 		mDairyButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				startActivityWithIntent((String)mDairyButton.getText());
+				startActivityWithIntent((String)mDairyButton.getText().toString());
 			}
 		});
 		
 		mGrainsButton = (Button)v.findViewById(R.id.grains_category_button);
 		mGrainsButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				startActivityWithIntent((String)mGrainsButton.getText());
+				startActivityWithIntent((String)mGrainsButton.getText().toString());
 			}
 		});
 		
 		mMeatsButton = (Button)v.findViewById(R.id.meats_category_button);
 		mMeatsButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				startActivityWithIntent((String)mMeatsButton.getText());
+				startActivityWithIntent((String)mMeatsButton.getText().toString());
 			}
 		});
 		
 		mNutsButton = (Button)v.findViewById(R.id.nuts_category_button);
 		mNutsButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				startActivityWithIntent((String)mNutsButton.getText());
+				startActivityWithIntent((String)mNutsButton.getText().toString());
 			}
 		});
 		

@@ -134,7 +134,7 @@ public class SpecificNutrientFragment extends Fragment {
 		});
 		
 		lineSeries.setData(validDates);
-		lineSeries.setStrokeThickness(15);
+		lineSeries.setStrokeThickness(8);
 		chartView.getSeries().add(lineSeries);
 		
 		CategoricalAxis horizontalAxis = new CategoricalAxis(getActivity().getBaseContext());

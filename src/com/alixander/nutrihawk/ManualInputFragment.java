@@ -69,7 +69,7 @@ public class ManualInputFragment extends Fragment{
 			nutrient_name.setText(top_text);
 			nutrient_name.setTextColor(getResources().getColor(R.color.green));
 			nutrient_name.setTextSize(20);
-			nutrient_name.setPadding(100, 0, 0, 0);
+			nutrient_name.setPadding(50, 0, 0, 0);
 			LayoutParams text_params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 			text_params.gravity = Gravity.LEFT;
 			nutrient_name.setLayoutParams(text_params);
@@ -81,7 +81,7 @@ public class ManualInputFragment extends Fragment{
 			second_row.setLayoutParams(new LayoutParams((int)(400*scale+0.5f), LayoutParams.WRAP_CONTENT, 6.0f));
 			second_row.setOrientation(LinearLayout.HORIZONTAL);
 			second_row.setGravity(Gravity.CENTER);
-			second_row.setPadding(100, 10, 10, 10);
+			second_row.setPadding(50, 10, 10, 10);
 			
 			//Create seekbar component
 			SeekBar seek_bar = new SeekBar(getActivity());
